@@ -1,0 +1,19 @@
+{
+  "name": "material-calculators",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "node src/lib/volume.test.js && node src/lib/paint.test.js && node src/lib/floor.test.js && node src/lib/concrete.test.js && node src/lib/preview.test.js"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.2"
+  }
+}

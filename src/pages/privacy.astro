@@ -1,0 +1,37 @@
+---
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Privacy Policy · Mattally</title>
+  <meta name="description" content="Mattally privacy policy, including analytics, advertising cookies and user choices." />
+  <link rel="canonical" href={new URL('/privacy/', Astro.site)} />
+</head>
+<body>
+  <nav><a href="/landscaping/gravel-calculator/">Mattally</a> › Privacy</nav>
+  <h1>Privacy Policy</h1>
+  <p>Last updated August 15, 2026.</p>
+
+  <h2>Information you enter</h2>
+  <p>Calculator values are processed in your browser. Mattally does not require an account and does not receive the measurements you enter. Calculator settings may be written into the page URL so you can bookmark or share an estimate.</p>
+
+  <h2>Server and analytics data</h2>
+  <p>Our hosting and analytics providers may process standard technical data such as IP address, browser type, referring page, requested URL and timestamps to deliver the site, prevent abuse and understand aggregate usage.</p>
+
+  <h2>Advertising and cookies</h2>
+  <p>Mattally may use Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on a visitor’s previous visits to this and other websites. Google’s advertising cookies allow Google and its partners to serve personalized ads where consent and applicable law permit.</p>
+  <p>You can manage personalized advertising in <a href="https://adssettings.google.com/" rel="external">Google Ads Settings</a>. Visitors in regions where consent is required will be shown a consent choice before personalized advertising is used.</p>
+
+  <h2>Your choices</h2>
+  <p>You can block or delete cookies using your browser settings. Doing so may affect advertising preferences but does not prevent the calculators from working.</p>
+
+  <h2>Contact</h2>
+  <p>For privacy questions, email <a href="mailto:hello@mattally.com">hello@mattally.com</a>.</p>
+
+  <Footer />
+</body>
+</html>

@@ -1,0 +1,278 @@
+---
+import Schema from '../../components/Schema.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+import { CATEGORIES, breadcrumbs } from '../../data/calculators.js';
+import { BAGS, LB_PER_CUFT } from '../../lib/concrete.js';
+
+const projects = [
+  { key: 'patio', label: 'Patio or slab', thickness: 4, waste: 0.07, note: 'The standard is 4 in, which meets most codes for foot traffic. Go to 6 in under a hot tub or an outdoor kitchen, or on expansive clay soil.' },
+  { key: 'driveway', label: 'Driveway', thickness: 4, waste: 0.07, note: '4 in handles cars and SUVs. Go to 5–6 in for heavy trucks or a large RV, and thicken the edges by 1–2 in — edges have less soil supporting them and take more load.' },
+  { key: 'sidewalk', label: 'Sidewalk or path', thickness: 4, waste: 0.07, note: '4 in for foot traffic. Go to 6 in or more anywhere a vehicle crosses it, such as an apron across a driveway.' },
+  { key: 'shed', label: 'Shed or garage floor', thickness: 4, waste: 0.07, note: '4 in for a shed or a garage carrying normal vehicles. Heavy equipment or a lift needs an engineered slab.' },
+  { key: 'footing', label: 'Footing', thickness: 12, waste: 0.1, note: 'Footings must sit at least 12 in into undisturbed soil AND below your local frost line — measured to the bottom of the footing. Frost depth ranges from 12 in where it barely freezes to 60 in in the far north, so check your local code rather than a national number.' },
+  { key: 'steps', label: 'Steps or stairs', thickness: 6, waste: 0.18, note: 'Steps have no standard dimension — measure yours. Waste runs 15–20% here rather than the usual 5–10%, because complex formwork spills and traps more.' },
+  { key: 'custom', label: 'Something else', thickness: 4, waste: 0.07, note: '' },
+];
+
+const faq = [
+  {
+    q: 'How much concrete do I need for a 10x10 slab?',
+    a: 'A 10 ft by 10 ft slab at the standard 4 in thickness is 1.23 cubic yards, or about 56 eighty-pound bags. Add the usual 5–10% waste and you are ordering 1.3 cubic yards. That is right at the point where a ready-mix truck starts to make sense.',
+  },
+  {
+    q: 'How many bags of concrete make a cubic yard?',
+    a: '45 bags at 80 lb, 60 bags at 60 lb, or 90 bags at 40 lb. Fifty-pound bags vary by manufacturer, somewhere between 72 and 75. That is a lot of mixing either way — it is the main practical reason people switch to ready-mix, quite apart from the cost.',
+  },
+  {
+    q: 'Should I buy bags or order ready-mix?',
+    a: 'Under about 1.5 cubic yards, buy bags — a truck would add a short-load fee that cancels out its price advantage. Over about 2 cubic yards, order ready-mix: bagged concrete costs roughly twice as much per finished yard, and mixing two yards by hand is a full day of work against a pour that takes under an hour. Between those two figures, get a quote both ways.',
+  },
+  {
+    q: 'How thick should a concrete driveway be?',
+    a: '4 in for cars and SUVs, which covers most homes. Go to 5–6 in if heavy trucks or a large RV will park on it, and thicken the outside edges by an extra inch or two — edges crack first because they have less soil supporting them from the sides.',
+  },
+  {
+    q: 'How deep should a fence post hole be?',
+    a: "About a third of the fence's above-ground height, so 24 in for a 6 ft fence, and three times the post width across. In cold regions the hole should also reach below the frost line, or freezing groundwater will lift the post over a few winters.",
+  },
+  {
+    q: 'How much does concrete weigh?',
+    a: 'About 150 lb per cubic foot, or roughly 4,050 lb per cubic yard wet. Cured concrete is a little lighter at 3,400–3,600 lb per yard as the mix water leaves. Worth knowing before you load bags into a car — 45 eighty-pound bags is 3,600 lb.',
+  },
+];
+
+const crumbs = breadcrumbs(Astro.site, 'concrete', 'Concrete Calculator', '/concrete/concrete-calculator/');
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Concrete Calculator – Cubic Yards, Bags & Post Holes</title>
+  <meta
+    name="description"
+    content="Work out how much concrete you need for a slab, driveway or fence posts — in cubic yards and bags — and whether to buy bags or order ready-mix."
+  />
+  <link rel="canonical" href={new URL('/concrete/concrete-calculator/', Astro.site)} />
+  <Schema faq={faq} crumbs={crumbs} />
+</head>
+<body>
+  <nav><a href="/calculators/">All calculators</a> › <a href={`/${'concrete'}/`}>{CATEGORIES['concrete'].label}</a> › Concrete Calculator</nav>
+  <h1>Concrete Calculator</h1>
+  <p>Size the pour, count the bags, and see when a ready-mix truck makes more sense.</p>
+
+  <form id="calc">
+    <fieldset>
+      <legend>What are you pouring?</legend>
+      <label>Job
+        <select name="job">
+          <option value="slab">A slab — patio, driveway, sidewalk, footing</option>
+          <option value="posts">Fence post holes</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset data-mode="slab">
+      <legend>Slab</legend>
+      <label>Type
+        <select name="project">
+          {projects.map((p) => <option value={p.key}>{p.label}</option>)}
+        </select>
+      </label>
+      <p id="projectNote"></p>
+      <label>Shape
+        <select name="shape">
+          <option value="rect">Rectangle</option>
+          <option value="circle">Circle</option>
+        </select>
+      </label>
+      <span data-shape="rect">
+        <label>Length <input type="number" name="length" value="10" min="0" step="any" inputmode="decimal" /> ft</label>
+        <label>Width <input type="number" name="width" value="10" min="0" step="any" inputmode="decimal" /> ft</label>
+      </span>
+      <span data-shape="circle" hidden>
+        <label>Diameter <input type="number" name="diameter" value="8" min="0" step="any" inputmode="decimal" /> ft</label>
+      </span>
+      <label>Thickness <input type="number" name="thickness" value="4" min="0" step="any" inputmode="decimal" /> in</label>
+    </fieldset>
+
+    <fieldset data-mode="posts" hidden>
+      <legend>Fence posts</legend>
+      <label>Number of posts <input type="number" name="count" value="10" min="0" step="1" inputmode="numeric" /></label>
+      <label>Post width <input type="number" name="postWidth" value="4" min="0" step="any" inputmode="decimal" /> in</label>
+      <label>Fence height <input type="number" name="fenceHeight" value="6" min="0" step="any" inputmode="decimal" /> ft</label>
+      <p id="postGuide"></p>
+      <label>Hole diameter <input type="number" name="holeDiameter" value="12" min="0" step="any" inputmode="decimal" /> in</label>
+      <label>Hole depth <input type="number" name="holeDepth" value="24" min="0" step="any" inputmode="decimal" /> in</label>
+      <p>
+        The rule of thumb is a hole three times the post width, dug a third of the fence's above-ground
+        height. Enter your fence height and post size and those two fields fill themselves in — override
+        them if your ground or local code says otherwise.
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Bags</legend>
+      <label>Bag size
+        <select name="bagSize">
+          {Object.keys(BAGS).map((s) => <option value={s} selected={s === '80'}>{s} lb</option>)}
+        </select>
+      </label>
+    </fieldset>
+  </form>
+
+  <figure id="preview" aria-label="Scale drawing of your project"></figure>
+
+  <h2>What you need</h2>
+  <output id="results" for="calc"></output>
+  <button type="button" id="copy">Copy this estimate</button>
+
+  <details class="method">
+    <summary>How this calculator works</summary>
+    <pre><code>slab:      length × width × thickness ÷ 27 = cubic yards
+post hole: (π × radius² × depth) − post volume, per hole</code></pre>
+  <p>
+    Concrete weighs about {LB_PER_CUFT} lb per cubic foot wet, which is {LB_PER_CUFT * 27} lb per cubic
+    yard. A quick sanity check for a 4 in slab: one cubic yard covers 81 sq ft, so square footage
+    divided by 81 gives you the yards.
+  </p>
+  <p>
+    <strong>The post itself takes up space in the hole.</strong> A 4x4 post in a 12 in hole displaces
+    about 14% of the concrete. This calculator subtracts it, so check whether whatever you compare
+    against does the same — an estimate built on the raw hole volume will have you buying bags you
+    cannot fit in the hole.
+  </p>
+  <p>
+    Bag yields: an 80 lb bag makes 0.60 cu ft, a 60 lb bag 0.45 cu ft, a 40 lb bag 0.30 cu ft — so
+    45, 60 and 90 bags respectively make a cubic yard. Fifty-pound bags vary by manufacturer, somewhere
+    between 72 and 75 bags per yard, so check your own bag rather than trusting a single figure.
+  </p>
+  </details>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    {faq.map((f) => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <h2>Other calculators</h2>
+  <ul>
+    <li><a href="/landscaping/gravel-calculator/">Gravel Calculator</a></li>
+    <li><a href="/flooring/flooring-calculator/">Flooring Calculator</a></li>
+    <li><a href="/painting/paint-calculator/">Paint Calculator</a></li>
+  </ul>
+  <Footer />
+
+  <script type="application/json" id="projects" set:html={JSON.stringify(projects)} />
+  <script>
+    import { restoreFromQuery, syncToQuery, wireCopy } from '../../lib/form.js';
+    import { slab, postHoles, postHoleGuide, buyAdvice } from '../../lib/concrete.js';
+    import { areaPreview, postPreview } from '../../lib/preview.js';
+    import { round } from '../../lib/volume.js';
+
+    const projects = JSON.parse(document.getElementById('projects').textContent);
+    const form = document.getElementById('calc');
+    const results = document.getElementById('results');
+    const el = (n) => form.elements.namedItem(n);
+    const num = (n) => parseFloat(el(n).value) || 0;
+
+    let lastPlainText = '';
+    let firstPaint = true;
+
+    function applyProject() {
+      const p = projects.find((x) => x.key === el('project').value);
+      document.getElementById('projectNote').textContent = p.note;
+      if (p.key !== 'custom') el('thickness').value = p.thickness;
+    }
+
+    function applyPostGuide() {
+      const g = postHoleGuide(num('postWidth'), num('fenceHeight'));
+      el('holeDiameter').value = g.diameterIn;
+      el('holeDepth').value = g.depthIn;
+      document.getElementById('postGuide').textContent =
+        `A ${num('fenceHeight')} ft fence on ${num('postWidth')} in posts wants ${g.diameterIn} in wide holes, ${g.depthIn} in deep.`;
+    }
+
+    function render() {
+      const mode = el('job').value;
+      for (const f of form.querySelectorAll('[data-mode]')) f.hidden = f.dataset.mode !== mode;
+
+      const bagSize = Number(el('bagSize').value);
+      let r;
+      let heading;
+
+      if (mode === 'posts') {
+        r = postHoles(
+          {
+            count: num('count'),
+            holeDiameterIn: num('holeDiameter'),
+            holeDepthIn: num('holeDepth'),
+            postWidthIn: num('postWidth'),
+          },
+          { bagSize },
+        );
+        document.getElementById('preview').innerHTML = postPreview(
+          num('holeDiameter'), num('holeDepth'), num('postWidth'), num('fenceHeight'), firstPaint);
+        firstPaint = false;
+        const saved = round((r.postCuFt * num('count')) / (r.holeCuFt * num('count') || 1) * 100);
+        heading = `<p>${num('count')} holes need <strong>${r.bags} bags</strong> of ${bagSize} lb concrete —
+          ${round(r.orderCubicFeet)} cu ft (${round(r.orderCubicYards)} cubic yards).</p>
+          <p>That's ${round(r.perHoleCuFt)} cu ft per hole. The posts themselves take up ${saved}% of each
+          hole, and that is already subtracted here.</p>`;
+      } else {
+        const p = projects.find((x) => x.key === el('project').value);
+        const shape = el('shape').value;
+        for (const s of form.querySelectorAll('[data-shape]')) s.hidden = s.dataset.shape !== shape;
+        r = slab(
+          { shape, length: num('length'), width: num('width'), diameter: num('diameter') },
+          num('thickness') / 12,
+          { waste: p.waste, bagSize },
+        );
+        document.getElementById('preview').innerHTML = areaPreview(
+          { shape, length: num('length'), width: num('width'), diameter: num('diameter') },
+          num('thickness'), 'concrete', firstPaint);
+        firstPaint = false;
+        heading = `<p>You need <strong>${round(r.orderCubicYards)} cubic yards</strong> —
+          ${round(r.orderCubicFeet)} cu ft, or ${r.bags} bags of ${bagSize} lb concrete.</p>
+          <p>Includes ${Math.round(p.waste * 100)}% waste. Finished weight about
+          ${Math.round(r.lbs).toLocaleString('en-US')} lb.</p>`;
+      }
+
+      const advice = buyAdvice(r.orderCubicYards);
+      results.innerHTML =
+        heading + (advice ? `<p><strong>Buy it as: ${advice.choice}.</strong> ${advice.text}</p>` : '');
+
+      lastPlainText =
+        `Concrete estimate\n${round(r.orderCubicYards)} cubic yards (${round(r.orderCubicFeet)} cu ft)\n` +
+        `${r.bags} x ${bagSize} lb bags` +
+        (advice ? `\nRecommended: ${advice.choice}` : '');
+
+      syncToQuery(form);
+    }
+
+    if (restoreFromQuery(form)) {
+      document.getElementById('projectNote').textContent =
+        projects.find((x) => x.key === el('project').value)?.note ?? '';
+    } else {
+      applyProject();
+      applyPostGuide();
+    }
+
+    form.addEventListener('input', (e) => {
+      if (e.target.name === 'project') applyProject();
+      // Typing a thickness by hand means the preset no longer describes the job.
+      if (e.target.name === 'thickness') el('project').value = 'custom';
+      if (e.target.name === 'postWidth' || e.target.name === 'fenceHeight') applyPostGuide();
+      render();
+    });
+    render();
+
+    wireCopy(document.getElementById('copy'), () => lastPlainText);
+  </script>
+</body>
+</html>

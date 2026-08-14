@@ -1,0 +1,35 @@
+---
+import { CATEGORIES, byCategory } from '../../data/calculators.js';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>All Material Calculators · Mattally</title>
+  <meta
+    name="description"
+    content="Browse every Mattally calculator for landscaping, concrete, flooring and painting projects."
+  />
+  <link rel="canonical" href={new URL('/calculators/', Astro.site)} />
+</head>
+<body>
+  <nav><a href="/landscaping/gravel-calculator/">Mattally</a> › All calculators</nav>
+  <h1>All Material Calculators</h1>
+  <p>Pick the material you are buying. Each calculator gives you the quantity to order in the units suppliers actually sell.</p>
+
+  {Object.entries(CATEGORIES).map(([key, c]) => (
+    <>
+      <h2><a href={`/${key}/`}>{c.label}</a></h2>
+      <ul>
+        {byCategory(key).map((calc) => (
+          <li><a href={calc.href}>{calc.name}</a> — {calc.blurb}</li>
+        ))}
+      </ul>
+    </>
+  ))}
+  <Footer />
+</body>
+</html>

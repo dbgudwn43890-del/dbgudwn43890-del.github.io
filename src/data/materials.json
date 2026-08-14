@@ -1,0 +1,315 @@
+{
+  "gravel": {
+    "name": "Gravel",
+    "category": "landscaping",
+    "density_lb_ft3": 105,
+    "density_note": "Crushed stone / driveway gravel, typical 100–115 lb/ft³ dry.",
+    "waste": 0.1,
+    "bag_cuft": 0.5,
+    "bag_label": "0.5 cu ft bags",
+    "depth_default_in": 2,
+    "projects": [
+      {
+        "label": "Driveway (new)",
+        "depth_in": 4,
+        "note": "New driveways are usually built in layers totalling 4–6 in. Go deeper for soft ground or heavy vehicles.",
+        "compaction": 0.2
+      },
+      {
+        "label": "Driveway (top-up)",
+        "depth_in": 2,
+        "note": "Refreshing an existing driveway usually needs 2 in of new stone.",
+        "compaction": 0.2
+      },
+      {
+        "label": "Walkway / path",
+        "depth_in": 2,
+        "note": "2 in is enough for foot traffic over a compacted base.",
+        "compaction": 0.2
+      },
+      {
+        "label": "Patio base",
+        "depth_in": 4,
+        "note": "Under pavers, 4 in of compacted base is the common minimum.",
+        "compaction": 0.2
+      },
+      {
+        "label": "Drainage trench",
+        "depth_in": 6,
+        "note": "French drains and trenches are typically filled 6 in or deeper."
+      },
+      {
+        "label": "Landscaping / ground cover",
+        "depth_in": 2,
+        "note": "2 in covers soil well without burying plants."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do you order gravel by the yard or by the ton?",
+        "a": "Both are normal and suppliers quote either. Bulk gravel is usually sold by the ton at the quarry and by the cubic yard at landscape suppliers. This calculator gives you both figures, so you can order in whichever unit your supplier uses without doing the conversion yourself."
+      },
+      {
+        "q": "How much will 1 ton of gravel cover?",
+        "a": "About 114 sq ft at 2 in deep, or roughly a 10 ft x 11 ft area. At 4 in deep it drops to about 57 sq ft. Use the coverage tool above to check any depth — that is what it is for."
+      },
+      {
+        "q": "How many bags of gravel are in a cubic yard?",
+        "a": "54 bags, if the bags are the common 0.5 cu ft size, because there are 27 cubic feet in a cubic yard. That is why bulk delivery is far cheaper than bags for anything bigger than a small path."
+      },
+      {
+        "q": "How deep should gravel be for a driveway?",
+        "a": "4 to 6 in for a new driveway, built up in layers and compacted as you go. Topping up an existing driveway takes about 2 in. Go deeper if the ground underneath is soft or heavy vehicles use it."
+      },
+      {
+        "q": "Why does the calculator tell me to order more than I need?",
+        "a": "Ground is never perfectly flat, gravel settles into the soil beneath it, and some is lost in handling. A 10% overage covers that. If you are compacting the gravel, tick the box — compacted gravel needs about 20% more loose material to finish at your target depth."
+      }
+    ]
+  },
+  "pea-gravel": {
+    "name": "Pea Gravel",
+    "category": "landscaping",
+    "density_lb_ft3": 96,
+    "density_note": "Rounded pea gravel, typical 92–100 lb/ft³ dry.",
+    "waste": 0.1,
+    "bag_cuft": 0.5,
+    "bag_label": "0.5 cu ft bags",
+    "depth_default_in": 2,
+    "projects": [
+      {
+        "label": "Walkway / path",
+        "depth_in": 2,
+        "note": "2 in stays comfortable to walk on. Deeper pea gravel feels loose underfoot."
+      },
+      {
+        "label": "Patio surface",
+        "depth_in": 2,
+        "note": "2 in over a compacted base keeps furniture stable.",
+        "compaction": 0.2
+      },
+      {
+        "label": "Playground surface",
+        "depth_in": 9,
+        "note": "Loose-fill playground surfacing needs 9 in after settling, and 12 in under equipment taller than 8 ft. This is a fall-protection safety depth — check the fall height of your equipment before ordering less."
+      },
+      {
+        "label": "Garden bed / ground cover",
+        "depth_in": 2,
+        "note": "2 in suppresses weeds without smothering roots."
+      },
+      {
+        "label": "Dog run",
+        "depth_in": 3,
+        "note": "3 in drains well and is easy to rake clean."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much does a ton of pea gravel cover?",
+        "a": "About 125 sq ft at 2 in deep. Pea gravel is lighter than crushed stone, so a ton of it goes slightly further than a ton of driveway gravel."
+      },
+      {
+        "q": "How deep should pea gravel be for a walkway?",
+        "a": "2 in over a compacted base. Deeper than that and it feels loose and shifty underfoot, because the rounded stones do not lock together the way crushed stone does."
+      },
+      {
+        "q": "Pea gravel or crushed stone — which should I use?",
+        "a": "Pea gravel is rounded and comfortable underfoot, which suits paths, patios and dog runs. Crushed stone has angular faces that lock together when compacted, which is why driveways and paver bases use it. Rounded stone will not hold a compacted shape."
+      },
+      {
+        "q": "Can pea gravel be used under playground equipment?",
+        "a": "Only at proper safety depth. Loose-fill playground surfacing needs 9 in after settling, and 12 in under equipment taller than 8 ft. Check the fall height of your equipment before ordering less."
+      }
+    ]
+  },
+  "topsoil": {
+    "name": "Topsoil",
+    "category": "landscaping",
+    "density_lb_ft3": 78,
+    "density_note": "Screened topsoil, typical 2,000–2,400 lb per cubic yard (74–89 lb/ft³). Saturated soil weighs considerably more.",
+    "waste": 0.1,
+    "bag_cuft": 1,
+    "bag_label": "1 cu ft bags",
+    "depth_default_in": 4,
+    "projects": [
+      {
+        "label": "New lawn / seeding",
+        "depth_in": 6,
+        "note": "Grass roots want 4–6 in. Till the new topsoil into the existing subsoil rather than laying it on top — roots won't cross a hard layer boundary."
+      },
+      {
+        "label": "Overseeding top-dress",
+        "depth_in": 0.5,
+        "note": "1/4 to 1/2 in only. Any deeper buries the grass crowns and the shoots can't get through."
+      },
+      {
+        "label": "Garden bed",
+        "depth_in": 8,
+        "note": "Vegetables and perennials do best with 8–12 in of loose soil."
+      },
+      {
+        "label": "Raised bed fill",
+        "depth_in": 12,
+        "note": "Measure your bed's inside depth and use that number instead if it differs."
+      },
+      {
+        "label": "Leveling low spots",
+        "depth_in": 2,
+        "note": "Fill in 2 in passes so the soil settles evenly."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do you buy topsoil by the yard or by the ton?",
+        "a": "By the cubic yard, in most of the US. Weight varies enormously with moisture — the same yard of soil can weigh 2,000 lb dry and 3,000 lb after rain — so volume is the more reliable way to order. This calculator gives both."
+      },
+      {
+        "q": "How many bags of topsoil are in a cubic yard?",
+        "a": "27 bags at 1 cu ft each, 18 at 1.5 cu ft, or 14 at 2 cu ft. Bagged soil costs several times more per cubic yard than bulk, so bags only make sense for small jobs or where a truck cannot reach."
+      },
+      {
+        "q": "How much does a yard of topsoil weigh?",
+        "a": "Screened topsoil typically runs 2,000 to 2,400 lb per cubic yard. Sandy soil sits at the lighter end, clay-heavy soil at the heavier end, and saturated soil can reach 3,000 lb. Check your trailer or truck rating before hauling it yourself."
+      },
+      {
+        "q": "How deep should topsoil be for a new lawn?",
+        "a": "4 to 6 in. Just as important, till the new topsoil into the existing subsoil rather than laying it on top — grass roots will not cross a hard boundary between two layers, and a thin layer over compacted ground gives you a lawn that dries out every summer."
+      },
+      {
+        "q": "Can you put topsoil on top of an existing lawn?",
+        "a": "Yes, but only a quarter to half an inch at a time. Any deeper buries the grass crowns and the shoots cannot get through. If you need to raise a low spot by more than that, do it over several applications a few weeks apart."
+      },
+      {
+        "q": "What is the difference between topsoil and fill dirt?",
+        "a": "Topsoil is the screened upper layer with organic matter in it, and it is what plants grow in. Fill dirt is subsoil — inert, cheaper, and valued because it compacts and stays put. Use fill dirt for bulk below about 6 in and topsoil for the top layer."
+      }
+    ]
+  },
+  "mulch": {
+    "name": "Mulch",
+    "category": "landscaping",
+    "density_lb_ft3": 30,
+    "density_note": "Shredded hardwood mulch. Bulk mulch runs 400–1,200 lb per cubic yard depending on type and how wet it is; 30 lb/ft³ (810 lb/yd) is a mid-range dry figure.",
+    "waste": 0.05,
+    "bag_cuft": 2,
+    "bag_label": "2 cu ft bags",
+    "depth_default_in": 3,
+    "projects": [
+      {
+        "label": "Garden bed",
+        "depth_in": 3,
+        "note": "3 in is the sweet spot: blocks weeds, still lets water through."
+      },
+      {
+        "label": "Top up existing mulch",
+        "depth_in": 1,
+        "note": "Only count the new layer. Measure what's still down and add the difference to get back to 3 in — old mulch that has broken down still counts."
+      },
+      {
+        "label": "Around trees",
+        "depth_in": 3,
+        "note": "3 in deep, but keep a 3–6 in gap of bare soil around the trunk. Mulch piled against bark holds moisture there and rots it."
+      },
+      {
+        "label": "Weed suppression",
+        "depth_in": 4,
+        "note": "4 in blocks most weed seeds from sprouting."
+      },
+      {
+        "label": "Playground surface",
+        "depth_in": 9,
+        "note": "Loose-fill playground surfacing needs 9 in after settling, and 12 in under equipment taller than 8 ft. This is a fall-protection safety depth, not a landscaping choice — check the fall height of your equipment."
+      },
+      {
+        "label": "Pathway",
+        "depth_in": 4,
+        "note": "Paths compact down fast, so start deeper than you think.",
+        "compaction": 0.2
+      }
+    ],
+    "faq": [
+      {
+        "q": "How many bags of mulch are in a cubic yard?",
+        "a": "About 14 bags at the common 2 cu ft size, since a cubic yard is 27 cubic feet. At 3 cu ft per bag it is 9 bags. Bulk delivery is usually cheaper than bags past about 2 cubic yards."
+      },
+      {
+        "q": "How deep should mulch be?",
+        "a": "2 to 3 in on established beds. A new bed with no existing mulch wants 4 in, or up to 6 in where weeds are bad. More than that starts blocking water and air from reaching roots."
+      },
+      {
+        "q": "How much does a cubic yard of mulch cover?",
+        "a": "324 sq ft at 1 in deep, 162 sq ft at 2 in, 108 sq ft at 3 in, and 81 sq ft at 4 in. Those are the four numbers worth remembering, and the calculator above works out anything in between."
+      },
+      {
+        "q": "How much does a yard of mulch weigh?",
+        "a": "Anywhere from 400 to 1,200 lb depending on the type and how wet it is. Moisture is the biggest factor — mulch that has sat through a rainstorm can weigh nearly double its dry weight, which matters if you are hauling it in a pickup."
+      },
+      {
+        "q": "Should I buy mulch by the bag or in bulk?",
+        "a": "Bags win for small beds, awkward access, or when you cannot take delivery. Bulk wins on price past roughly 2 cubic yards, which is about 14 bags. Bulk also arrives without 14 plastic sacks to dispose of."
+      },
+      {
+        "q": "How often should mulch be topped up?",
+        "a": "Once a year for most wood mulches, because they break down into the soil — which is a feature, not a fault. Measure what is still down and add only the difference to get back to 3 in, rather than piling a fresh 3 in on top every spring."
+      },
+      {
+        "q": "Why should mulch not touch a tree trunk?",
+        "a": "Mulch piled against bark holds moisture there, and constant damp rots the bark and invites disease and rodents. Keep a 3 to 6 in gap of bare soil around the trunk. The mulch ring should look like a doughnut, not a volcano."
+      }
+    ]
+  },
+  "dirt": {
+    "name": "Dirt",
+    "category": "landscaping",
+    "density_lb_ft3": 76,
+    "density_note": "Loose fill dirt, typical 70–85 lb/ft³.",
+    "waste": 0.05,
+    "bag_cuft": null,
+    "bag_label": null,
+    "depth_default_in": 4,
+    "projects": [
+      {
+        "label": "Fill a low spot",
+        "depth_in": 4,
+        "note": "Compact every 4 in or the fill will sink later.",
+        "compaction": 0.15
+      },
+      {
+        "label": "Grading / slope away from house",
+        "depth_in": 3,
+        "note": "Aim for 6 in of drop over the first 10 ft from the foundation.",
+        "compaction": 0.15
+      },
+      {
+        "label": "Raised bed base",
+        "depth_in": 10,
+        "note": "Fill dirt below, topsoil in the top 6–8 in."
+      },
+      {
+        "label": "Filling a hole",
+        "depth_in": 12,
+        "note": "Use the hole's actual depth here.",
+        "compaction": 0.15
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is the difference between fill dirt and topsoil?",
+        "a": "Fill dirt is subsoil with the organic matter screened out — inert, cheap, and it compacts well, which is exactly what you want under a structure or filling a hole. Topsoil has organic content and is what plants grow in. Using topsoil as bulk fill is expensive and it settles more."
+      },
+      {
+        "q": "How much does a yard of fill dirt weigh?",
+        "a": "Around 2,000 lb per cubic yard loose, more once wet or compacted. A standard half-ton pickup should not carry a full cubic yard of it."
+      },
+      {
+        "q": "Why does the calculator add extra for compaction?",
+        "a": "Because loose dirt loses volume when you tamp it. Fill that is not compacted in layers will sink later, leaving you with the same low spot you were trying to fix. Plan on roughly 15% more loose material than the finished volume, and compact every 4 in as you fill."
+      },
+      {
+        "q": "How do I work out how much dirt fills a hole?",
+        "a": "Enter the hole's actual depth rather than a landscaping depth, and use its length and width at the widest point. Holes are rarely neat rectangles, so round up — being a wheelbarrow short is worse than being one over."
+      }
+    ]
+  }
+}

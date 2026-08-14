@@ -1,0 +1,175 @@
+{
+  "flooring": {
+    "name": "Flooring",
+    "sold": "box",
+    "patterns": [
+      {
+        "key": "straight",
+        "label": "Straight lay"
+      },
+      {
+        "key": "diagonal",
+        "label": "Diagonal (45°)"
+      },
+      {
+        "key": "herringbone",
+        "label": "Herringbone or chevron"
+      }
+    ],
+    "materials": [
+      {
+        "key": "laminate",
+        "label": "Laminate",
+        "box_sqft": 20,
+        "waste": {
+          "straight": 0.08,
+          "diagonal": 0.12,
+          "herringbone": 0.14
+        }
+      },
+      {
+        "key": "lvp",
+        "label": "Vinyl plank (LVP)",
+        "box_sqft": 22,
+        "waste": {
+          "straight": 0.07,
+          "diagonal": 0.1,
+          "herringbone": 0.12
+        }
+      },
+      {
+        "key": "lvt",
+        "label": "Vinyl tile (LVT)",
+        "box_sqft": 20,
+        "waste": {
+          "straight": 0.07,
+          "diagonal": 0.12
+        }
+      },
+      {
+        "key": "engineered",
+        "label": "Engineered hardwood",
+        "box_sqft": 20,
+        "waste": {
+          "straight": 0.07,
+          "diagonal": 0.12,
+          "herringbone": 0.15
+        }
+      },
+      {
+        "key": "hardwood",
+        "label": "Solid hardwood",
+        "box_sqft": 20,
+        "waste": {
+          "straight": 0.1,
+          "diagonal": 0.15,
+          "herringbone": 0.17
+        }
+      },
+      {
+        "key": "tile",
+        "label": "Tile, 12 in or larger",
+        "box_sqft": 15,
+        "waste": {
+          "straight": 0.1,
+          "diagonal": 0.15
+        }
+      },
+      {
+        "key": "small-tile",
+        "label": "Tile, smaller than 12 in",
+        "box_sqft": 10,
+        "waste": {
+          "straight": 0.12,
+          "diagonal": 0.17
+        }
+      },
+      {
+        "key": "stone",
+        "label": "Natural stone",
+        "box_sqft": 12,
+        "waste": {
+          "straight": 0.15,
+          "diagonal": 0.2
+        }
+      }
+    ],
+    "angles_extra": 0.05,
+    "box_note": "Box coverage is printed on the box and varies by manufacturer — laminate and vinyl plank usually run 18–25 sq ft, solid hardwood around 20. Change it if yours differs.",
+    "faq": [
+      {
+        "q": "How much extra flooring should I order?",
+        "a": "It depends on the material and the pattern, not a single flat number. Vinyl plank laid straight needs about 7%, laminate 8%, solid hardwood 10%, and natural stone 15%. Laying at 45 degrees adds roughly 5 points to any of those, and herringbone adds more again. Pick your material and pattern above and the calculator applies the right figure."
+      },
+      {
+        "q": "Why does herringbone waste so much more material?",
+        "a": "In a straight lay only the boards meeting a wall get cut. In herringbone every board sits at an angle to the wall, so both ends of every perimeter board are mitred, and the offcuts are angled pieces that rarely fit anywhere else."
+      },
+      {
+        "q": "Should I include closets when measuring?",
+        "a": "Yes, if you are flooring them. Measure each closet as its own small rectangle and add it to your total. Closets are also why the extra-cuts option exists — several small enclosed spaces generate far more offcut waste per square foot than one open room."
+      },
+      {
+        "q": "What happens if I under-order flooring?",
+        "a": "You order more, and the new boxes may come from a different production run. Shade and texture vary slightly between batches, and a batch line across a finished floor is visible and permanent. Buy the whole job in one order, and keep a spare box for future repairs."
+      },
+      {
+        "q": "How many square feet are in a box of flooring?",
+        "a": "Laminate and vinyl plank usually cover 18 to 25 sq ft per box, and solid hardwood around 20 sq ft. It varies by manufacturer and is printed on the box — enter your actual figure above rather than relying on the default."
+      },
+      {
+        "q": "Can I calculate flooring for an L-shaped room?",
+        "a": "Split it into rectangles, run each through the calculator, and add the square footage together before applying waste. An L-shape is two rectangles; a room with a bay is three. Tick the extra-cuts option too, since every additional corner is another cut."
+      },
+      {
+        "q": "Do I need underlayment, and how much?",
+        "a": "Floating floors — laminate and most vinyl plank — need it unless the boards come with it pre-attached. Rolls come in 100, 200, 360, 450 and 630 sq ft, and you want about 10% more than your floor area because the seams overlap by roughly 6 in."
+      }
+    ]
+  },
+  "carpet": {
+    "name": "Carpet",
+    "sold": "roll",
+    "roll_widths": [
+      6,
+      12,
+      13.5,
+      15
+    ],
+    "roll_note": "Carpet comes off a fixed-width roll. 12 ft is the dominant US standard; 13 ft 6 in and 15 ft are sold as wide goods but are less common, and 6 ft is mostly a commercial and hallway width. You pay for the full width of whatever length you order, so the roll width decides your real waste.",
+    "faq": [
+      {
+        "q": "Is carpet sold by the square foot or the square yard?",
+        "a": "Broadloom carpet is traditionally sold by the square yard in the US and many suppliers still quote that way, though some now price per square foot. There are 9 square feet in a square yard, so carpet at $27 per square yard is $3 per square foot. This calculator shows both so you can compare quotes directly."
+      },
+      {
+        "q": "What width does carpet come in?",
+        "a": "12 ft is the dominant US standard. 13 ft 6 in and 15 ft exist as wide goods but are stocked less widely, and 6 ft shows up mainly in commercial ranges and hallway runners. Metric equivalents are 3.66 m, 4 m and 5 m."
+      },
+      {
+        "q": "Why does 13 ft 6 in carpet exist?",
+        "a": "To avoid a seam in rooms that just miss 12 ft. A room 12 ft 6 in wide needs two strips and a seam on a 12 ft roll, but goes down in one piece on a 13 ft 6 in roll. If your room is between 12 and 13 ft 6 in, ask whether the carpet you like comes in the wider width before accepting a seam."
+      },
+      {
+        "q": "How much carpet do I need for a 13 x 12 room?",
+        "a": "On a 12 ft roll, run the strips along the 12 ft side: one 12 ft wide strip 13 ft long gives you 156 sq ft with no seam. Run them the other way and you need two strips, 288 sq ft, and a seam. Same room, same roll, nearly double the carpet — which is why this calculator checks both orientations."
+      },
+      {
+        "q": "Why does my room need a seam?",
+        "a": "Because it is wider than the carpet roll in both directions. A 12 ft roll cannot cover a 14 ft wide room in one piece, so the installer joins strips. Seams are a normal part of carpet installation and a good installer makes them nearly invisible — but you should know how many you are getting before you order."
+      },
+      {
+        "q": "Where should carpet seams be placed?",
+        "a": "Run them in the same direction as the light from the main window, so the pile shading hides the join. Keep them out of doorways, entry sightlines and high-traffic paths, and never put one down the middle of a walkway or under dining chairs that slide. Under furniture and at door thresholds are the natural places to hide them. If the installer is also laying pad, its seams should run perpendicular to the carpet seams or be offset by at least 6 inches."
+      },
+      {
+        "q": "Does the estimate include padding and fitting?",
+        "a": "No. This is the carpet itself. Padding, tack strip, door bars and labour are quoted separately, and padding is priced per square foot of floor area rather than per roll length. Installers also trim a few inches off each strip, so treat the roll length as a minimum and let your supplier add their own allowance."
+      },
+      {
+        "q": "What about patterned carpet?",
+        "a": "Patterned carpet needs extra length so the repeat lines up across seams and along walls. Ask your supplier for the pattern repeat measurement and add roughly one repeat per seam. Plain and textured carpets do not have this problem."
+      }
+    ]
+  }
+}

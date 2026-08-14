@@ -1,0 +1,287 @@
+---
+import Schema from '../../components/Schema.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+import { CATEGORIES, breadcrumbs } from '../../data/calculators.js';
+import types from '../../data/flooring.json';
+
+export function getStaticPaths() {
+  return Object.entries(types).map(([key, t]) => ({
+    params: { slug: `${key}-calculator` },
+    props: { key, type: t },
+  }));
+}
+
+const { key, type } = Astro.props;
+const isCarpet = type.sold === 'roll';
+const title = isCarpet
+  ? 'Carpet Calculator – Square Yards, Roll Length & Cost'
+  : 'Flooring Calculator – Square Feet, Boxes & Cost';
+
+const crumbs = breadcrumbs(Astro.site, 'flooring', `${type.name} Calculator`, `/flooring/${key}-calculator/`);
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title}</title>
+  <meta
+    name="description"
+    content={
+      isCarpet
+        ? 'Work out how much carpet a room needs — including the roll width, where the seams fall, and how much you actually pay for.'
+        : 'Work out how much flooring a room needs, in square feet and whole boxes, with the right waste allowance for your layout.'
+    }
+  />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <Schema faq={type.faq} crumbs={crumbs} />
+</head>
+<body>
+  <nav><a href="/calculators/">All calculators</a> › <a href={`/${'flooring'}/`}>{CATEGORIES['flooring'].label}</a> › {type.name} Calculator</nav>
+  <h1>{type.name} Calculator</h1>
+  <p>
+    {isCarpet
+      ? 'Enter the room and roll width to get the length to order, including unavoidable seams.'
+      : 'Enter the room and layout to get the square footage, waste allowance and whole boxes to order.'}
+  </p>
+
+  <form id="calc">
+    <fieldset>
+      <legend>Room</legend>
+      <label>Length <input type="number" name="length" value="14" min="0" step="any" inputmode="decimal" /> ft</label>
+      <label>Width <input type="number" name="width" value="12" min="0" step="any" inputmode="decimal" /> ft</label>
+    </fieldset>
+
+    {isCarpet ? (
+      <fieldset>
+        <legend>Carpet roll</legend>
+        <label>Roll width
+          <select name="rollWidth">
+            {type.roll_widths.map((w) => (
+              <option value={w} selected={w === 12}>{w === 13.5 ? "13 ft 6 in" : `${w} ft`}</option>
+            ))}
+          </select>
+        </label>
+        <p>{type.roll_note}</p>
+      </fieldset>
+    ) : (
+      <fieldset>
+        <legend>What are you laying?</legend>
+        <label>Material
+          <select name="material">
+            {type.materials.map((m) => <option value={m.key}>{m.label}</option>)}
+          </select>
+        </label>
+        <label>Pattern
+          <select name="pattern">
+            {type.patterns.map((p) => <option value={p.key}>{p.label}</option>)}
+          </select>
+        </label>
+        <label><input type="checkbox" name="angles" /> Lots of closets, angles or a hallway</label>
+        <p id="wasteNote"></p>
+        <label>Box covers <input type="number" name="boxSqFt" value={type.materials[0].box_sqft} min="0" step="any" inputmode="decimal" /> sq ft</label>
+        <p>{type.box_note}</p>
+      </fieldset>
+    )}
+
+    <fieldset>
+      <legend>Cost (optional)</legend>
+      <label>Price
+        <input type="number" name="price" value="" min="0" step="any" inputmode="decimal" placeholder="e.g. 3.50" />
+      </label>
+      <label>per
+        <select name="priceUnit">
+          <option value="sqft">square foot</option>
+          <option value="sqyd" selected={isCarpet}>square yard</option>
+          {!isCarpet && <option value="box">box</option>}
+        </select>
+      </label>
+      {isCarpet && <p>Carpet is usually priced per square yard. There are 9 square feet in a square yard.</p>}
+    </fieldset>
+  </form>
+
+  <figure id="preview" aria-label="Scale drawing of your project"></figure>
+
+  <h2>What to buy</h2>
+  <output id="results" for="calc"></output>
+  <button type="button" id="copy">Copy this estimate</button>
+
+  <details class="method">
+  <summary>How this calculator works</summary>
+  {isCarpet ? (
+    <>
+      <pre><code>strips      = ceil(room width ÷ roll width)
+roll length = strips × room length
+you pay for = roll length × roll width</code></pre>
+      <p>
+        The room is tried both ways round and the cheaper layout wins — turning a room 90° often drops
+        a whole strip. A 13 ft × 24 ft room takes 312 sq ft of carpet laid one way and 576 sq ft laid
+        the other, on the same roll.
+      </p>
+      <p>
+        Anything wider than the roll needs a seam. Seams are normal and a good installer hides them,
+        but you should know before you order how many you're getting and roughly where they land.
+      </p>
+      <p>
+        This figure is the carpet itself. Padding, tack strip and fitting are quoted separately, and
+        patterned carpet needs extra for matching the repeat — ask your supplier for the pattern repeat
+        and add that to the length.
+      </p>
+    </>
+  ) : (
+    <>
+      <pre><code>area      = length × width
+order     = area × (1 + waste)
+boxes     = ceil(order ÷ box coverage)</code></pre>
+      <p>
+        Waste allowance is not padding — it's the offcuts. Every board cut at a wall leaves a piece too
+        short to use elsewhere, and a diagonal layout mitres both ends of every edge board.
+      </p>
+      <p>
+        The allowance depends on both material and pattern, which is why this asks for both. Vinyl plank
+        laid straight wastes about 7%; solid hardwood in herringbone wastes 17%. Small tiles waste more
+        than large ones because there are more cuts per square foot, and natural stone wastes most of
+        all because pieces break and colours have to be sorted.
+      </p>
+      <p>
+        Buy the whole job in one order. Boxes from different production batches can differ slightly in
+        shade, and running short means either a visible batch line or a second delivery charge.
+      </p>
+    </>
+  )}
+  </details>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    {type.faq.map((f) => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <h2>Other calculators</h2>
+  <ul>
+    {Object.entries(types)
+      .filter(([k]) => k !== key)
+      .map(([k, t]) => <li><a href={`/flooring/${k}-calculator/`}>{t.name} Calculator</a></li>)}
+    <li><a href="/painting/paint-calculator/">Paint Calculator</a></li>
+    <li><a href="/landscaping/gravel-calculator/">Gravel Calculator</a></li>
+  </ul>
+  <Footer />
+
+  <script type="application/json" id="config" set:html={JSON.stringify(type)} />
+  <script>
+    import { restoreFromQuery, syncToQuery, wireCopy } from '../../lib/form.js';
+    import { flooring, carpetRoll } from '../../lib/floor.js';
+    import { floorPreview, carpetPreview } from '../../lib/preview.js';
+    import { round } from '../../lib/volume.js';
+
+    const config = JSON.parse(document.getElementById('config').textContent);
+    const isCarpet = config.sold === 'roll';
+    const form = document.getElementById('calc');
+    const results = document.getElementById('results');
+    const el = (n) => form.elements.namedItem(n);
+    const num = (n) => parseFloat(el(n).value) || 0;
+
+    let lastPlainText = '';
+    let firstPaint = true;
+
+    function render(materialChanged = false) {
+      const length = num('length');
+      const width = num('width');
+      const price = num('price');
+      const unit = el('priceUnit').value;
+
+      let html;
+      let plain;
+
+      if (isCarpet) {
+        const rollWidth = Number(el('rollWidth').value);
+        const c = carpetRoll(length, width, rollWidth);
+        document.getElementById('preview').innerHTML = carpetPreview(length, width, rollWidth, c, firstPaint);
+        firstPaint = false;
+        const cost = price
+          ? unit === 'sqyd'
+            ? price * c.sqYards
+            : price * c.area
+          : 0;
+        html = `
+          <p>Order <strong>${round(c.rollLengthFt)} ft of ${c.rollWidthFt} ft wide carpet</strong> —
+          that's ${round(c.sqYards)} square yards (${round(c.area)} sq ft)${
+            cost ? `, about <strong>$${Math.round(cost).toLocaleString('en-US')}</strong>` : ''
+          }.</p>
+          <p>Your room is ${round(c.roomArea)} sq ft, so ${round(c.wasteSqFt)} sq ft is offcut —
+          ${Math.round(c.wastePct * 100)}% waste. ${
+            c.seams
+              ? `${c.strips} strips means <strong>${c.seams} seam${c.seams > 1 ? 's' : ''}</strong>.`
+              : 'The room fits the roll width, so <strong>no seams</strong>.'
+          }</p>` +
+          (c.seams
+            ? `<p>Ask your installer to run the seam${c.seams > 1 ? 's' : ''} in the same direction as
+               the light from your main window, and away from doorways and walking paths. A wider roll
+               would remove ${c.seams > 1 ? 'some of them' : 'it'} — worth asking whether your carpet
+               comes in 13 ft 6 in or 15 ft.</p>`
+            : '');
+        plain =
+          `Carpet estimate — ${length} x ${width} ft room\n` +
+          `Roll: ${c.rollWidthFt} ft wide x ${round(c.rollLengthFt)} ft long\n` +
+          `${round(c.sqYards)} sq yd (${round(c.area)} sq ft), ${c.seams} seam(s)` +
+          (cost ? `\nEstimated cost: $${Math.round(cost).toLocaleString('en-US')}` : '');
+      } else {
+        const mat = config.materials.find((m) => m.key === el('material').value);
+        const pattern = el('pattern').value;
+        // Not every material is laid in every pattern; fall back to the diagonal figure.
+        const base = mat.waste[pattern] ?? mat.waste.diagonal ?? mat.waste.straight;
+        const extra = el('angles').checked ? config.angles_extra : 0;
+        const waste = base + extra;
+
+        if (materialChanged) el('boxSqFt').value = mat.box_sqft;
+        document.getElementById('wasteNote').textContent =
+          `${Math.round(waste * 100)}% waste — ${Math.round(base * 100)}% for ${mat.label.toLowerCase()} laid ${
+            mat.waste[pattern] ? pattern : 'at an angle'
+          }${extra ? `, plus ${Math.round(extra * 100)}% for the extra cuts around closets and angles` : ''}.`;
+
+        document.getElementById('preview').innerHTML = floorPreview(length, width, waste, firstPaint);
+        firstPaint = false;
+        const f = flooring(length * width, { waste, boxSqFt: num('boxSqFt') || null });
+        const cost = price
+          ? unit === 'box'
+            ? price * (f.boxes ?? 0)
+            : unit === 'sqyd'
+              ? price * f.sqYards
+              : price * f.withWaste
+          : 0;
+        html = `
+          <p>Order <strong>${f.boxes ?? round(f.withWaste) + ' sq ft'}${
+            f.boxes ? ` box${f.boxes > 1 ? 'es' : ''}` : ''
+          }</strong>${
+            f.boxes ? ` — ${round(f.boxedArea)} sq ft of flooring` : ''
+          }${cost ? `, about <strong>$${Math.round(cost).toLocaleString('en-US')}</strong>` : ''}.</p>
+          <p>Your floor is ${round(f.area)} sq ft. With ${Math.round(waste * 100)}% waste that's
+          ${round(f.withWaste)} sq ft to buy (${round(f.sqYards)} square yards).</p>`;
+        plain =
+          `Flooring estimate — ${length} x ${width} ft room\n` +
+          `Floor area: ${round(f.area)} sq ft, +${Math.round(waste * 100)}% waste = ${round(f.withWaste)} sq ft\n` +
+          (f.boxes ? `Buy ${f.boxes} boxes (${round(f.boxedArea)} sq ft)` : '') +
+          (cost ? `\nEstimated cost: $${Math.round(cost).toLocaleString('en-US')}` : '');
+      }
+
+      results.innerHTML = html;
+      lastPlainText = plain;
+      syncToQuery(form);
+    }
+
+    restoreFromQuery(form);
+
+    // Switching material resets the box size to that material's typical figure,
+    // but a box size the user typed themselves is left alone.
+    form.addEventListener('input', (e) => render(e.target.name === 'material'));
+    render(!location.search);
+
+    wireCopy(document.getElementById('copy'), () => lastPlainText);
+  </script>
+</body>
+</html>

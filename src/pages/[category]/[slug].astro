@@ -1,0 +1,304 @@
+---
+import Schema from '../../components/Schema.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+import { CATEGORIES, breadcrumbs } from '../../data/calculators.js';
+import materials from '../../data/materials.json';
+import { UNITS } from '../../lib/volume.js';
+
+export function getStaticPaths() {
+  return Object.entries(materials).map(([key, m]) => ({
+    params: { category: m.category, slug: `${key}-calculator` },
+    props: { key, material: m },
+  }));
+}
+
+const { key, material } = Astro.props;
+const lower = material.name.toLowerCase();
+const title = `${material.name} Calculator – Cubic Yards, Tons & Bags`;
+const others = Object.entries(materials).filter(([k]) => k !== key);
+
+const crumbs = breadcrumbs(Astro.site, material.category, `${material.name} Calculator`, `/${material.category}/${key}-calculator/`);
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title}</title>
+  <meta
+    name="description"
+    content={`Calculate how much ${lower} you need. Enter your area and depth to get cubic yards, tons, bags and cost — plus how much to actually order.`}
+  />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <Schema faq={material.faq} crumbs={crumbs} />
+</head>
+<body>
+  <nav><a href="/calculators/">All calculators</a> › <a href={`/${material.category}/`}>{CATEGORIES[material.category].label}</a> › {material.name} Calculator</nav>
+  <h1>{material.name} Calculator</h1>
+  <p>Enter the area and choose the job. We’ll set a practical depth and tell you how much {lower} to order.</p>
+
+  <form id="calc">
+    <fieldset>
+      <legend>What are you doing?</legend>
+      <label>Project
+        <select name="project">
+          {material.projects.map((p, i) => <option value={i}>{p.label}</option>)}
+          <option value="custom">Something else</option>
+        </select>
+      </label>
+      <p id="projectNote"></p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Area</legend>
+      <label>Shape
+        <select name="shape">
+          <option value="rect">Rectangle</option>
+          <option value="circle">Circle</option>
+          <option value="area">I already know the area</option>
+        </select>
+      </label>
+      <span data-shape="area" hidden>
+        <label>Area <input type="number" name="area" value="400" min="0" step="any" inputmode="decimal" /> sq ft</label>
+      </span>
+      <span data-shape="rect">
+        <label>Length <input type="number" name="length" value="20" min="0" step="any" inputmode="decimal" /></label>
+        <label>Width <input type="number" name="width" value="20" min="0" step="any" inputmode="decimal" /></label>
+      </span>
+      <span data-shape="circle" hidden>
+        <label>Diameter <input type="number" name="diameter" value="10" min="0" step="any" inputmode="decimal" /></label>
+      </span>
+      <span data-shape="rect circle">
+        <label>Measured in
+          <select name="lengthUnit">
+            {UNITS.map((u) => <option value={u} selected={u === 'ft'}>{u}</option>)}
+          </select>
+        </label>
+      </span>
+    </fieldset>
+
+    <fieldset>
+      <legend>Depth</legend>
+      <label>Depth
+        <input type="number" name="depth" value={material.depth_default_in} min="0" step="any" inputmode="decimal" />
+      </label>
+      <label>Measured in
+        <select name="depthUnit">
+          {UNITS.map((u) => <option value={u} selected={u === 'in'}>{u}</option>)}
+        </select>
+      </label>
+      <label>
+        <input type="checkbox" name="compact" />
+        I'm compacting this down (tamper or plate compactor)
+      </label>
+      <p id="compactNote"></p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Cost (optional)</legend>
+      <label>Price
+        <input type="number" name="price" value="" min="0" step="any" inputmode="decimal" placeholder="e.g. 45" />
+      </label>
+      <label>per
+        <select name="priceUnit">
+          <option value="ton">ton</option>
+          <option value="yard">cubic yard</option>
+          {material.bag_cuft && <option value="bag">bag</option>}
+        </select>
+      </label>
+      <p>Leave blank to skip. Check your local supplier's price per ton — it varies a lot by region.</p>
+    </fieldset>
+  </form>
+
+  <figure id="preview" aria-label="Scale drawing of your project"></figure>
+
+  <h2>What you need</h2>
+  <output id="results" for="calc"></output>
+  <button type="button" id="copy">Copy this estimate</button>
+
+  <details id="reverse">
+    <summary>I already know how much I'm buying — how far will it go?</summary>
+    <form id="rev">
+      <label>Amount <input type="number" name="amount" value="1" min="0" step="any" inputmode="decimal" /></label>
+      <label>of
+        <select name="amountUnit">
+          <option value="tons">tons</option>
+          <option value="yards">cubic yards</option>
+          {material.bag_cuft && <option value="bags">bags</option>}
+        </select>
+      </label>
+      <label>spread
+        <input type="number" name="revDepth" value={material.depth_default_in} min="0" step="any" inputmode="decimal" />
+        in deep
+      </label>
+    </form>
+    <output id="revResults" for="rev"></output>
+  </details>
+
+  <details class="method">
+    <summary>How this calculator works</summary>
+    <p>Volume is area multiplied by depth. Weight is that volume multiplied by the material's density.</p>
+    <pre><code>volume = area × depth
+tons   = volume (cu ft) × {material.density_lb_ft3} lb/cu ft ÷ 2000
+order  = volume × {Math.round((1 + material.waste) * 100) / 100}</code></pre>
+    <p>
+      Density used: <strong>{material.density_lb_ft3} lb per cubic foot</strong>. {material.density_note}{' '}
+      Actual delivered weight varies with moisture and stone size, so treat tonnage as an estimate and
+      confirm with your supplier.
+    </p>
+    <p>
+      The recommended order adds <strong>{Math.round(material.waste * 100)}%</strong> on top. Material settles,
+      ground is never perfectly flat, and a second delivery costs far more than a little extra {lower}.
+    </p>
+    {material.bag_cuft && <p>Bag count assumes {material.bag_label}, rounded up to whole bags.</p>}
+  </details>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    {material.faq.map((f) => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <h2>Other calculators</h2>
+  <ul>
+    {others.map(([k, m]) => (
+      <li><a href={`/${m.category}/${k}-calculator/`}>{m.name} Calculator</a></li>
+    ))}
+  </ul>
+
+  <Footer />
+
+  <script type="application/json" id="material" set:html={JSON.stringify({ ...material, key })} />
+  <script>
+    import { restoreFromQuery, syncToQuery, wireCopy } from '../../lib/form.js';
+    import { calculate, coverage, toFeet, round } from '../../lib/volume.js';
+    import { areaPreview } from '../../lib/preview.js';
+
+    const material = JSON.parse(document.getElementById('material').textContent);
+    const form = document.getElementById('calc');
+    const results = document.getElementById('results');
+    const projectNote = document.getElementById('projectNote');
+
+    const el = (n) => form.elements.namedItem(n);
+    const num = (n) => parseFloat(el(n).value) || 0;
+    const money = (n) => `$${n.toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
+
+    // Metric users expect tonnes and m², not short tons and square feet.
+    const isMetric = () => ['m', 'cm'].includes(el('lengthUnit').value);
+    const SQM = 10.7639;
+
+    let lastPlainText = '';
+    let firstPaint = true; // entrance animation plays once, not on every keystroke
+
+    const currentProject = () => material.projects[el('project').value];
+    const COMPACTION = 0.2;
+
+    function applyProject() {
+      const p = currentProject();
+      projectNote.textContent = p ? p.note : '';
+      if (p) {
+        el('depthUnit').value = 'in';
+        el('depth').value = p.depth_in;
+        el('compact').checked = Boolean(p.compaction);
+      }
+    }
+
+    function render() {
+      const shape = el('shape').value;
+      for (const s of form.querySelectorAll('[data-shape]')) {
+        s.hidden = !s.dataset.shape.split(' ').includes(shape);
+      }
+
+      const lu = el('lengthUnit').value;
+      const dims = {
+        shape,
+        area: num('area'),
+        length: toFeet(num('length'), lu),
+        width: toFeet(num('width'), lu),
+        diameter: toFeet(num('diameter'), lu),
+      };
+      const compaction = el('compact').checked ? (currentProject()?.compaction ?? COMPACTION) : 0;
+      document.getElementById('compactNote').textContent = compaction
+        ? `Compacting settles the material, so we've added ${Math.round(compaction * 100)}% more on top of the usual overage.`
+        : '';
+      const depthFt = toFeet(num('depth'), el('depthUnit').value);
+      const r = calculate(dims, depthFt, material, compaction);
+      document.getElementById('preview').innerHTML = areaPreview(dims, depthFt * 12, material.key, firstPaint);
+      firstPaint = false;
+
+      const area = isMetric()
+        ? `${round(r.areaSqFt / SQM)} m²`
+        : `${round(r.areaSqFt)} sq ft`;
+      const weight = isMetric()
+        ? `${round(r.tons * 0.907)} tonnes`
+        : `${round(r.tons)} tons`;
+      const orderWeight = isMetric()
+        ? `${round(r.orderTons * 0.907)} tonnes`
+        : `${round(r.orderTons)} tons`;
+
+      const price = num('price');
+      const perUnit = el('priceUnit').value;
+      const cost = !price
+        ? ''
+        : money(
+            price *
+              (perUnit === 'ton' ? r.orderTons : perUnit === 'yard' ? r.orderCubicYards : r.bags),
+          );
+
+      results.innerHTML = `
+        <p>Order <strong>${round(r.orderCubicYards)} cubic yards</strong> — that's ${orderWeight}${
+          r.bags ? ` or ${r.bags} bags` : ''
+        }${cost ? `, about <strong>${cost}</strong>` : ''}.</p>
+        <p>Your ${area} area at that depth holds ${round(r.cubicYards)} cubic yards (${weight}).
+        The order figure adds ${Math.round(material.waste * 100)}% so you don't run short.</p>`;
+
+      lastPlainText =
+        `${material.name} estimate\n` +
+        `Area: ${area}, depth ${num('depth')} ${el('depthUnit').value}\n` +
+        `Needed: ${round(r.cubicYards)} cu yd (${weight})\n` +
+        `Order: ${round(r.orderCubicYards)} cu yd (${orderWeight})${r.bags ? ` or ${r.bags} bags` : ''}` +
+        (cost ? `\nEstimated cost: ${cost}` : '');
+
+      syncToQuery(form);
+    }
+
+    // Restore state from the URL so a shared link reproduces the same estimate.
+    if (restoreFromQuery(form)) {
+      projectNote.textContent = currentProject()?.note ?? '';
+    } else {
+      applyProject();
+    }
+
+    form.addEventListener('input', (e) => {
+      // Changing depth by hand means the user has left the preset behind.
+      if (e.target.name === 'depth' || e.target.name === 'depthUnit') el('project').value = 'custom';
+      if (e.target.name === 'project') applyProject();
+      render();
+    });
+    render();
+
+    wireCopy(document.getElementById('copy'), () => lastPlainText);
+
+    // Reverse: known amount -> area covered.
+    const rev = document.getElementById('rev');
+    const revResults = document.getElementById('revResults');
+    function renderReverse() {
+      const amount = parseFloat(rev.elements.amount.value) || 0;
+      const depth = parseFloat(rev.elements.revDepth.value) || 0;
+      const c = coverage(amount, rev.elements.amountUnit.value, toFeet(depth, 'in'), material);
+      revResults.innerHTML = c.sqFt
+        ? `<p>That covers about <strong>${round(c.sqFt)} sq ft</strong> — roughly a
+           ${round(c.squareOfSide)} ft × ${round(c.squareOfSide)} ft square.</p>`
+        : '<p>Enter an amount and a depth greater than zero.</p>';
+    }
+    rev.addEventListener('input', renderReverse);
+    renderReverse();
+
+  </script>
+</body>
+</html>

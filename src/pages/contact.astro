@@ -1,0 +1,24 @@
+---
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Contact Mattally</title>
+  <meta name="description" content="Contact Mattally about calculator corrections, feedback and site questions." />
+  <link rel="canonical" href={new URL('/contact/', Astro.site)} />
+</head>
+<body>
+  <nav><a href="/landscaping/gravel-calculator/">Mattally</a> › Contact</nav>
+  <h1>Contact</h1>
+  <p>Found a calculation issue, unclear instruction or outdated material assumption? Tell us what page you were using and what you expected.</p>
+
+  <h2>Email</h2>
+  <p><a href="mailto:hello@mattally.com">hello@mattally.com</a></p>
+
+  <Footer />
+</body>
+</html>

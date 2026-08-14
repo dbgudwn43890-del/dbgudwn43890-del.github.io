@@ -1,0 +1,48 @@
+---
+import { CATEGORIES, byCategory } from '../../data/calculators.js';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+
+export function getStaticPaths() {
+  return Object.entries(CATEGORIES).map(([key, c]) => ({
+    params: { category: key },
+    props: { key, category: c },
+  }));
+}
+
+const { key, category } = Astro.props;
+const calculators = byCategory(key);
+const others = Object.entries(CATEGORIES).filter(([k]) => k !== key);
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{category.label} Calculators</title>
+  <meta name="description" content={category.blurb} />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+</head>
+<body>
+  <nav><a href="/calculators/">All calculators</a> › {category.label}</nav>
+
+  <h1>{category.label} Calculators</h1>
+  <p>{category.blurb}</p>
+
+  <ul>
+    {calculators.map((c) => (
+      <li>
+        <a href={c.href}>{c.name}</a> — {c.blurb}
+      </li>
+    ))}
+  </ul>
+
+  <h2>Other categories</h2>
+  <ul>
+    {others.map(([k, c]) => (
+      <li><a href={`/${k}/`}>{c.label}</a></li>
+    ))}
+  </ul>
+  <Footer />
+</body>
+</html>

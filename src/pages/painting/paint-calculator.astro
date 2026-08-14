@@ -1,0 +1,254 @@
+---
+import Schema from '../../components/Schema.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+import { CATEGORIES, breadcrumbs } from '../../data/calculators.js';
+import { SURFACES, PRIMER_COVERAGE, DOOR_SQFT, WINDOW_SQFT } from '../../lib/paint.js';
+
+const faq = [
+  {
+    q: 'How much paint do I need for a 12x12 room?',
+    a: `A 12 ft by 12 ft room with 8 ft walls has 384 sq ft of wall before openings. Take off one door and two windows and you are at 333 sq ft, which is about 1.7 gallons for two coats on smooth drywall — so two gallons. Add roughly two thirds of a gallon if you are painting the ceiling too.`,
+  },
+  {
+    q: 'How many square feet does a gallon of paint cover?',
+    a: `350 to 400 sq ft per coat on smooth primed drywall, which is what Sherwin-Williams and Behr both quote. Rougher surfaces are dramatically worse: wood siding around ${SURFACES.wood.coverage}, brick ${SURFACES.brick.coverage}, and stucco only ${SURFACES.stucco.coverage} sq ft per gallon. Choosing the wrong surface is the biggest single cause of a bad paint estimate.`,
+  },
+  {
+    q: 'Do I need one coat or two?',
+    a: 'Two, in almost every real situation. One coat only works when you are repainting the same colour on a sound, already-painted wall. Going lighter over a dark colour, covering patches, or using a strong colour with poor natural opacity — reds and yellows especially — can need three.',
+  },
+  {
+    q: 'How much primer do I need?',
+    a: `Primer covers about ${PRIMER_COVERAGE} sq ft per gallon, noticeably less than finish paint, because it is thinner bodied. It goes on once over everything you are painting. You need it on bare drywall, patched areas, bare wood, and when covering a dark colour with a much lighter one.`,
+  },
+  {
+    q: 'Should I subtract doors and windows?',
+    a: `Yes, and this calculator does it for you at ${DOOR_SQFT} sq ft per door and ${WINDOW_SQFT} sq ft per window — the standard sizes. On a small room those openings can be 15% of the wall area, which is easily a whole gallon on a large job. Unusually large picture windows or sliding doors will make the estimate run high.`,
+  },
+  {
+    q: 'Can I use wall paint on the ceiling and trim?',
+    a: 'Not well, which is why this calculator lists them separately. Ceiling paint is flat to hide imperfections and formulated not to drip. Trim paint is semi-gloss or gloss so it wipes clean and stands up to knocks. They are different products in different tins and you cannot substitute one for the other.',
+  },
+  {
+    q: 'How much paint do I need for the trim?',
+    a: 'Trim here is estimated from the room perimeter, which covers baseboards and door casing on a typical room. That usually lands under a gallon for a single room. If you have deep crown moulding, panelling, or tall Victorian skirting, buy an extra quart.',
+  },
+];
+
+const crumbs = breadcrumbs(Astro.site, 'painting', 'Paint Calculator', '/painting/paint-calculator/');
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Paint Calculator – How Many Gallons for a Room</title>
+  <meta
+    name="description"
+    content="Work out how much paint a room needs. Enter the room size, doors and windows, and get gallons for walls, ceiling and trim — plus what to actually buy."
+  />
+  <link rel="canonical" href={new URL('/painting/paint-calculator/', Astro.site)} />
+  <Schema faq={faq} crumbs={crumbs} />
+</head>
+<body>
+  <nav><a href="/calculators/">All calculators</a> › <a href={`/${'painting'}/`}>{CATEGORIES['painting'].label}</a> › Paint Calculator</nav>
+  <h1>Paint Calculator</h1>
+  <p>Measure the room once. Get a separate, store-ready paint list for walls, ceiling, trim and primer.</p>
+
+  <form id="calc">
+    <fieldset>
+      <legend>Room</legend>
+      <label>Length <input type="number" name="length" value="12" min="0" step="any" inputmode="decimal" /> ft</label>
+      <label>Width <input type="number" name="width" value="14" min="0" step="any" inputmode="decimal" /> ft</label>
+      <label>Wall height <input type="number" name="height" value="8" min="0" step="any" inputmode="decimal" /> ft</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Doors and windows</legend>
+      <label>Doors <input type="number" name="doors" value="1" min="0" step="1" inputmode="numeric" /></label>
+      <label>each <input type="number" name="doorSqFt" value={DOOR_SQFT} min="0" step="any" inputmode="decimal" /> sq ft</label>
+      <label>Windows <input type="number" name="windows" value="2" min="0" step="1" inputmode="numeric" /></label>
+      <label>each <input type="number" name="windowSqFt" value={WINDOW_SQFT} min="0" step="any" inputmode="decimal" /> sq ft</label>
+      <p>
+        Defaults are a standard {DOOR_SQFT} sq ft door (3 ft × 7 ft) and a {WINDOW_SQFT} sq ft window
+        (3 ft × 5 ft). Window sizes vary far more than door sizes — a small bathroom window is nearer
+        10 sq ft and a picture window can be 24 — so change it if yours are unusual.
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>What are you painting?</legend>
+      <label><input type="checkbox" name="walls" checked /> Walls</label>
+      <label><input type="checkbox" name="ceiling" /> Ceiling</label>
+      <label><input type="checkbox" name="trim" /> Trim and baseboards</label>
+      <label>Coats on walls
+        <select name="coats">
+          <option value="1">1 coat</option>
+          <option value="2" selected>2 coats</option>
+          <option value="3">3 coats</option>
+        </select>
+      </label>
+      <label>Coats on ceiling
+        <select name="ceilingCoats">
+          <option value="1" selected>1 coat</option>
+          <option value="2">2 coats</option>
+        </select>
+      </label>
+      <label>Surface
+        <select name="surface">
+          {Object.entries(SURFACES).map(([k, s]) => (
+            <option value={k}>{s.label} — {s.coverage} sq ft per gallon</option>
+          ))}
+        </select>
+      </label>
+      <label><input type="checkbox" name="primer" /> Priming first (bare, patched or dark walls)</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Cost (optional)</legend>
+      <label>Price per gallon <input type="number" name="price" value="" min="0" step="any" inputmode="decimal" placeholder="e.g. 45" /></label>
+    </fieldset>
+  </form>
+
+  <figure id="preview" aria-label="Scale drawing of your project"></figure>
+
+  <h2>What to buy</h2>
+  <output id="results" for="calc"></output>
+  <button type="button" id="copy">Copy this estimate</button>
+
+  <details class="method">
+  <summary>How this calculator works</summary>
+  <pre><code>wall area = 2 × (length + width) × height − doors − windows
+gallons   = area × coats ÷ coverage for your surface</code></pre>
+  <p>
+    Sherwin-Williams and Behr both quote 350–400 sq ft per gallon per coat on smooth primed drywall.
+    Rougher and more porous surfaces take far more: {Object.entries(SURFACES).map(([, s]) => `${s.label.toLowerCase()} ${s.coverage}`).join(', ')} sq ft
+    per gallon. Picking the wrong one here is the single biggest source of a bad paint estimate.
+  </p>
+  <p>
+    Primer is calculated separately at <strong>{PRIMER_COVERAGE} sq ft per gallon</strong> — it's thinner
+    bodied than finish paint and covers noticeably less ground, which is why one gallon of primer does
+    not stretch as far as one gallon of paint.
+  </p>
+  <p>
+    Ceilings are counted as length × width. Trim is estimated from the room perimeter, which covers
+    baseboards and door casing for a typical room — if you have deep crown moulding, buy an extra quart.
+  </p>
+  <p>
+    Walls, ceiling and trim are listed separately because they take different paint. Ceiling paint is
+    flat, trim is usually semi-gloss or gloss, and you cannot pour one into the other.
+  </p>
+  <p>
+    The ceiling defaults to <strong>one coat</strong> while the walls default to two. Ceiling paint is
+    thick, flat and usually going over white, so a second coat is rarely needed. Change it if you're
+    covering a stain, a bold colour, or a ceiling that has never been painted.
+  </p>
+  </details>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    {faq.map((f) => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <h2>Other calculators</h2>
+  <ul>
+    <li><a href="/landscaping/gravel-calculator/">Gravel Calculator</a></li>
+    <li><a href="/landscaping/topsoil-calculator/">Topsoil Calculator</a></li>
+    <li><a href="/landscaping/mulch-calculator/">Mulch Calculator</a></li>
+  </ul>
+  <Footer />
+
+  <script>
+    import { restoreFromQuery, syncToQuery, wireCopy } from '../../lib/form.js';
+    import { paint } from '../../lib/paint.js';
+    import { paintPreview } from '../../lib/preview.js';
+    import { round } from '../../lib/volume.js';
+
+    const form = document.getElementById('calc');
+    const results = document.getElementById('results');
+    const el = (n) => form.elements.namedItem(n);
+    const num = (n) => parseFloat(el(n).value) || 0;
+
+    let lastPlainText = '';
+    let firstPaint = true;
+
+    function render() {
+      const room = { length: num('length'), width: num('width'), height: num('height') };
+      const r = paint(room, {
+        doors: num('doors'),
+        windows: num('windows'),
+        coats: Number(el('coats').value),
+        ceilingCoats: Number(el('ceilingCoats').value),
+        doorSqFt: num('doorSqFt'),
+        windowSqFt: num('windowSqFt'),
+        ceiling: el('ceiling').checked,
+        trim: el('trim').checked,
+        surface: el('surface').value,
+        primer: el('primer').checked,
+      });
+
+      document.getElementById('preview').innerHTML = paintPreview(room, {
+        doors: num('doors'),
+        windows: num('windows'),
+        ceiling: el('ceiling').checked,
+        trim: el('trim').checked,
+      }, firstPaint);
+      firstPaint = false;
+
+      // Walls are optional too — someone repainting only the ceiling should not be sold wall paint.
+      const wantWalls = el('walls').checked;
+      const lines = [
+        wantWalls && ['Walls', r.wallArea, r.walls, r.buyWalls],
+        el('ceiling').checked && ['Ceiling', r.ceilingArea, r.ceiling, r.buyCeiling],
+        el('trim').checked && ['Trim', r.trimArea, r.trim, r.buyTrim],
+        el('primer').checked && ['Primer', r.wallArea + r.ceilingArea + r.trimArea, r.primerGallons, r.buyPrimer],
+      ].filter(Boolean);
+
+      if (!lines.length) {
+        results.innerHTML = '<p>Pick at least one surface to paint.</p>';
+        lastPlainText = '';
+        return;
+      }
+
+      const price = num('price');
+      const totalGal = lines.reduce((sum, [, , g]) => sum + g, 0);
+      const cost = price
+        ? ` Roughly $${Math.round(price * Math.ceil(totalGal)).toLocaleString('en-US')} in paint.`
+        : '';
+
+      results.innerHTML =
+        '<ul>' +
+        lines
+          .map(
+            ([label, area, gal, buy]) =>
+              `<li><strong>${label}: buy ${buy}</strong> — ${round(area)} sq ft needs ${round(gal)} gallons</li>`,
+          )
+          .join('') +
+        `</ul><p>${round(totalGal)} gallons of paint in total across ${lines.length} surface${
+          lines.length > 1 ? 's' : ''
+        }.${cost}</p>`;
+
+      lastPlainText =
+        `Paint estimate — ${num('length')} x ${num('width')} ft room, ${num('height')} ft walls\n` +
+        lines.map(([label, area, gal, buy]) => `${label}: ${buy} (${round(area)} sq ft, ${round(gal)} gal)`).join('\n') +
+        `\n${el('coats').value} coats` +
+        (cost ? `\n${cost.trim()}` : '');
+
+      syncToQuery(form);
+    }
+
+    restoreFromQuery(form);
+
+    form.addEventListener('input', render);
+    render();
+
+    wireCopy(document.getElementById('copy'), () => lastPlainText);
+  </script>
+</body>
+</html>

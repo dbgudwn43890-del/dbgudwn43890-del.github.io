@@ -1,0 +1,18 @@
+---
+// FAQPage + BreadcrumbList JSON-LD. Every calculator page emits both.
+const { faq, crumbs } = Astro.props;
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+  crumbs,
+];
+---
+
+{ld.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}

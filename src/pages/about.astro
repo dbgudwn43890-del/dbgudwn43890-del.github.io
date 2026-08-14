@@ -1,0 +1,28 @@
+---
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>About Mattally</title>
+  <meta name="description" content="Why Mattally builds practical material calculators and how its estimates are prepared." />
+  <link rel="canonical" href={new URL('/about/', Astro.site)} />
+</head>
+<body>
+  <nav><a href="/landscaping/gravel-calculator/">Mattally</a> › About</nav>
+  <h1>About Mattally</h1>
+  <p>Mattally builds straightforward material calculators for home and trade projects.</p>
+
+  <h2>What we do</h2>
+  <p>Our calculators turn measurements into the quantities suppliers actually sell: cubic yards, tons, bags, boxes, gallons and rolls.</p>
+  <p>Each estimate shows the assumptions behind it, including density, coverage and waste allowance. We test the calculation code against worked examples, but real materials and job sites vary.</p>
+
+  <h2>Editorial approach</h2>
+  <p>We write for someone planning a real purchase, not for a search engine. Guidance is kept specific to the material and the job. When local codes, product instructions or supplier measurements take priority, we say so.</p>
+
+  <Footer />
+</body>
+</html>
