@@ -1,6 +1,7 @@
 ---
 import Schema from '../../components/Schema.astro';
 import Footer from '../../components/Footer.astro';
+import AdSenseHead from '../../components/AdSenseHead.astro';
 import '../../styles/global.css';
 import { CATEGORIES, breadcrumbs } from '../../data/calculators.js';
 import types from '../../data/flooring.json';
@@ -35,6 +36,7 @@ const crumbs = breadcrumbs(Astro.site, 'flooring', `${type.name} Calculator`, `/
     }
   />
   <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <AdSenseHead />
   <Schema faq={type.faq} crumbs={crumbs} />
 </head>
 <body>
