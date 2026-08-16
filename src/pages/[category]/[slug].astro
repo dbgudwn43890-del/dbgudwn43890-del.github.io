@@ -9,18 +9,18 @@ import materials from '../../data/materials.json';
 import { UNITS } from '../../lib/volume.js';
 
 export function getStaticPaths() {
-  return Object.entries(materials).map(([key, m]) => ({
+  return Object.entries(materials).filter(([key]) => key !== 'gravel').map(([key, m]) => ({
     params: { category: m.category, slug: `${key}-calculator` },
     props: { key, material: m },
   }));
 }
 
-const { key, material } = Astro.props;
+const { key, material, canonicalPath = Astro.url.pathname } = Astro.props;
 const lower = material.name.toLowerCase();
-const title = `${material.name} Calculator – Cubic Yards, Tons & Bags`;
+const title = `${material.name} Calculator – Cubic Yards, Tons & Bags | Mattally`;
 const others = Object.entries(materials).filter(([k]) => k !== key);
 
-const crumbs = breadcrumbs(Astro.site, material.category, `${material.name} Calculator`, `/${material.category}/${key}-calculator/`);
+const crumbs = breadcrumbs(Astro.site, material.category, `${material.name} Calculator`, canonicalPath);
 ---
 
 <html lang="en">
@@ -33,7 +33,7 @@ const crumbs = breadcrumbs(Astro.site, material.category, `${material.name} Calc
     name="description"
     content={`Calculate how much ${lower} you need. Enter your area and depth to get cubic yards, tons, bags and cost — plus how much to actually order.`}
   />
-  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <link rel="canonical" href={new URL(canonicalPath, Astro.site)} />
   <AdSenseHead />
   <Schema faq={material.faq} crumbs={crumbs} />
 </head>
@@ -171,7 +171,7 @@ order  = volume × {Math.round((1 + material.waste) * 100) / 100}</code></pre>
   <h2>Other calculators</h2>
   <ul>
     {others.map(([k, m]) => (
-      <li><a href={`/${m.category}/${k}-calculator/`}>{m.name} Calculator</a></li>
+      <li><a href={k === 'gravel' ? '/' : `/${m.category}/${k}-calculator/`}>{m.name} Calculator</a></li>
     ))}
   </ul>
 

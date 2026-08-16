@@ -1,14 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="refresh" content="0;url=/landscaping/gravel-calculator/" />
-  <meta name="robots" content="noindex" />
-  <link rel="canonical" href="https://mattally.com/landscaping/gravel-calculator/" />
-  <title>Gravel Calculator · Mattally</title>
-  <script is:inline>location.replace('/landscaping/gravel-calculator/');</script>
-</head>
-<body>
-  <p><a href="/landscaping/gravel-calculator/">Open the Gravel Calculator</a></p>
-</body>
-</html>
+---
+import MaterialCalculatorPage from './[category]/[slug].astro';
+import materials from '../data/materials.json';
+---
+
+<MaterialCalculatorPage key="gravel" material={materials.gravel} canonicalPath="/" />

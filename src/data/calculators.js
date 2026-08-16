@@ -24,7 +24,7 @@ export const CATEGORIES = {
 
 const CALCULATORS = [
   ...Object.entries(materials).map(([key, m]) => ({
-    href: `/${m.category}/${key}-calculator/`,
+    href: key === 'gravel' ? '/' : `/${m.category}/${key}-calculator/`,
     name: `${m.name} Calculator`,
     category: m.category,
     blurb: `How much ${m.name.toLowerCase()} you need, in cubic yards, tons and bags.`,
