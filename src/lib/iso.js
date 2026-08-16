@@ -28,5 +28,3 @@ export function boxFaces(w, d, h, scale, ox, oy, zScale = scale) {
     front: [p(w, d, h), p(0, d, h), p(0, d, 0), p(w, d, 0)].join(' '),
   };
 }
-
-export { COS30, SIN30 };
