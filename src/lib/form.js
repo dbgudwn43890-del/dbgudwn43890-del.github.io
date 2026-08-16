@@ -21,14 +21,27 @@ export function restoreFromQuery(form) {
 export const syncToQuery = (form) =>
   history.replaceState(null, '', `?${new URLSearchParams(new FormData(form))}`);
 
-/** Copy button that confirms itself and reverts. */
-export function wireCopy(button, getText) {
+/** Share an estimate with its reproducible URL; copy it where native sharing is unavailable. */
+export function wireShare(button, getText) {
   button.addEventListener('click', async () => {
     const text = getText();
     if (!text) return;
-    await navigator.clipboard.writeText(text);
     const original = button.textContent;
-    button.textContent = 'Copied';
+    const share = { title: document.title, text, url: location.href };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(share);
+        button.textContent = 'Shared';
+      } else {
+        await navigator.clipboard.writeText(`${text}\n\n${location.href}`);
+        button.textContent = 'Link copied';
+      }
+      window.gtag?.('event', 'share', { method: navigator.share ? 'native' : 'clipboard' });
+    } catch (error) {
+      if (error.name === 'AbortError') return;
+      button.textContent = 'Could not share';
+    }
     setTimeout(() => (button.textContent = original), 2000);
   });
 }

@@ -119,7 +119,7 @@ const crumbs = breadcrumbs(Astro.site, 'painting', 'Paint Calculator', '/paintin
 
   <h2>What to buy</h2>
   <output id="results" for="calc"></output>
-  <button type="button" id="copy">Copy this estimate</button>
+  <button type="button" id="copy">Share this estimate</button>
 
   <details class="method">
   <summary>How this calculator works</summary>
@@ -169,7 +169,7 @@ gallons   = area × coats ÷ coverage for your surface</code></pre>
   <Footer />
 
   <script>
-    import { restoreFromQuery, syncToQuery, wireCopy } from '../../lib/form.js';
+    import { restoreFromQuery, syncToQuery, wireShare } from '../../lib/form.js';
     import { paint } from '../../lib/paint.js';
     import { paintPreview } from '../../lib/preview.js';
     import { round } from '../../lib/volume.js';
@@ -252,7 +252,7 @@ gallons   = area × coats ÷ coverage for your surface</code></pre>
     form.addEventListener('input', render);
     render();
 
-    wireCopy(document.getElementById('copy'), () => lastPlainText);
+    wireShare(document.getElementById('copy'), () => lastPlainText);
   </script>
 </body>
 </html>

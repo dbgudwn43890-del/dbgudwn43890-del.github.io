@@ -109,7 +109,7 @@ const crumbs = breadcrumbs(Astro.site, 'flooring', `${type.name} Calculator`, `/
 
   <h2>What to buy</h2>
   <output id="results" for="calc"></output>
-  <button type="button" id="copy">Copy this estimate</button>
+  <button type="button" id="copy">Share this estimate</button>
 
   <details class="method">
   <summary>How this calculator works</summary>
@@ -178,7 +178,7 @@ boxes     = ceil(order ÷ box coverage)</code></pre>
 
   <script type="application/json" id="config" set:html={JSON.stringify(type)} />
   <script>
-    import { restoreFromQuery, syncToQuery, wireCopy } from '../../lib/form.js';
+    import { restoreFromQuery, syncToQuery, wireShare } from '../../lib/form.js';
     import { flooring, carpetRoll } from '../../lib/floor.js';
     import { floorPreview, carpetPreview } from '../../lib/preview.js';
     import { round } from '../../lib/volume.js';
@@ -285,7 +285,7 @@ boxes     = ceil(order ÷ box coverage)</code></pre>
     form.addEventListener('input', (e) => render(e.target.name === 'material'));
     render(!location.search);
 
-    wireCopy(document.getElementById('copy'), () => lastPlainText);
+    wireShare(document.getElementById('copy'), () => lastPlainText);
   </script>
 </body>
 </html>

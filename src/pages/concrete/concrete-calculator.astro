@@ -130,7 +130,7 @@ const crumbs = breadcrumbs(Astro.site, 'concrete', 'Concrete Calculator', '/conc
 
   <h2>What you need</h2>
   <output id="results" for="calc"></output>
-  <button type="button" id="copy">Copy this estimate</button>
+  <button type="button" id="copy">Share this estimate</button>
 
   <details class="method">
     <summary>How this calculator works</summary>
@@ -174,7 +174,7 @@ post hole: (π × radius² × depth) − post volume, per hole</code></pre>
 
   <script type="application/json" id="projects" set:html={JSON.stringify(projects)} />
   <script>
-    import { restoreFromQuery, syncToQuery, wireCopy } from '../../lib/form.js';
+    import { restoreFromQuery, syncToQuery, wireShare } from '../../lib/form.js';
     import { slab, postHoles, postHoleGuide, buyAdvice } from '../../lib/concrete.js';
     import { areaPreview, postPreview } from '../../lib/preview.js';
     import { round } from '../../lib/volume.js';
@@ -276,7 +276,7 @@ post hole: (π × radius² × depth) − post volume, per hole</code></pre>
     });
     render();
 
-    wireCopy(document.getElementById('copy'), () => lastPlainText);
+    wireShare(document.getElementById('copy'), () => lastPlainText);
   </script>
 </body>
 </html>
