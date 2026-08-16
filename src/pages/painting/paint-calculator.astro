@@ -2,6 +2,7 @@
 import Schema from '../../components/Schema.astro';
 import Footer from '../../components/Footer.astro';
 import AdSenseHead from '../../components/AdSenseHead.astro';
+import AnalyticsHead from '../../components/AnalyticsHead.astro';
 import '../../styles/global.css';
 import { CATEGORIES, breadcrumbs } from '../../data/calculators.js';
 import { SURFACES, PRIMER_COVERAGE, DOOR_SQFT, WINDOW_SQFT } from '../../lib/paint.js';
@@ -42,6 +43,7 @@ const crumbs = breadcrumbs(Astro.site, 'painting', 'Paint Calculator', '/paintin
 
 <html lang="en">
 <head>
+  <AnalyticsHead />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>Paint Calculator – How Many Gallons for a Room</title>
