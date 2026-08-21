@@ -1,9 +1,7 @@
 ---
 import Schema from '../../components/Schema.astro';
 import Footer from '../../components/Footer.astro';
-import AdSenseHead from '../../components/AdSenseHead.astro';
-import AnalyticsHead from '../../components/AnalyticsHead.astro';
-import '../../styles/global.css';
+import Head from '../../components/Head.astro';
 import { CATEGORIES, breadcrumbs } from '../../data/calculators.js';
 import materials from '../../data/materials.json';
 import { UNITS } from '../../lib/volume.js';
@@ -25,16 +23,11 @@ const crumbs = breadcrumbs(Astro.site, material.category, `${material.name} Calc
 
 <html lang="en">
 <head>
-  <AnalyticsHead />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>{title}</title>
-  <meta
-    name="description"
-    content={`Calculate how much ${lower} you need. Enter your area and depth to get cubic yards, tons, bags and cost — plus how much to actually order.`}
+  <Head
+    title={title}
+    description={`Calculate how much ${lower} you need. Enter your area and depth to get cubic yards, tons, bags and cost — plus how much to actually order.`}
+    canonical={canonicalPath}
   />
-  <link rel="canonical" href={new URL(canonicalPath, Astro.site)} />
-  <AdSenseHead />
   <Schema faq={material.faq} crumbs={crumbs} />
 </head>
 <body>

@@ -1,17 +1,16 @@
 ---
 import Footer from '../components/Footer.astro';
-import AnalyticsHead from '../components/AnalyticsHead.astro';
-import '../styles/global.css';
+import Head from '../components/Head.astro';
 ---
 
 <html lang="en">
 <head>
-  <AnalyticsHead />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Privacy Policy · Mattally</title>
-  <meta name="description" content="Mattally privacy policy, including analytics, advertising cookies and user choices." />
-  <link rel="canonical" href={new URL('/privacy/', Astro.site)} />
+  <Head
+    title="Privacy Policy · Mattally"
+    description="Mattally privacy policy, including analytics, advertising cookies and user choices."
+    canonical="/privacy/"
+    ads={false}
+  />
 </head>
 <body>
   <nav><a href="/">Mattally</a> › Privacy</nav>

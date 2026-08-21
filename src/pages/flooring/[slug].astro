@@ -1,9 +1,7 @@
 ---
 import Schema from '../../components/Schema.astro';
 import Footer from '../../components/Footer.astro';
-import AdSenseHead from '../../components/AdSenseHead.astro';
-import AnalyticsHead from '../../components/AnalyticsHead.astro';
-import '../../styles/global.css';
+import Head from '../../components/Head.astro';
 import { CATEGORIES, breadcrumbs } from '../../data/calculators.js';
 import types from '../../data/flooring.json';
 
@@ -25,20 +23,15 @@ const crumbs = breadcrumbs(Astro.site, 'flooring', `${type.name} Calculator`, `/
 
 <html lang="en">
 <head>
-  <AnalyticsHead />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>{title}</title>
-  <meta
-    name="description"
-    content={
+  <Head
+    title={title}
+    description={
       isCarpet
         ? 'Work out how much carpet a room needs — including the roll width, where the seams fall, and how much you actually pay for.'
         : 'Work out how much flooring a room needs, in square feet and whole boxes, with the right waste allowance for your layout.'
     }
+    canonical={Astro.url.pathname}
   />
-  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-  <AdSenseHead />
   <Schema faq={type.faq} crumbs={crumbs} />
 </head>
 <body>

@@ -1,0 +1,27 @@
+---
+// Every page's <head>: analytics, meta, canonical, AdSense.
+import '../styles/global.css';
+const { title, description, canonical, ads = true, noindex = false } = Astro.props;
+---
+
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-GC20MG0J18"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GC20MG0J18');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>{title}</title>
+{description && <meta name="description" content={description} />}
+{canonical && <link rel="canonical" href={new URL(canonical, Astro.site)} />}
+{noindex && <meta name="robots" content="noindex" />}
+{ads && (
+  <script
+    is:inline
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7333941918726111"
+    crossorigin="anonymous"
+  ></script>
+)}

@@ -1,17 +1,16 @@
 ---
 import Footer from '../components/Footer.astro';
-import AnalyticsHead from '../components/AnalyticsHead.astro';
-import '../styles/global.css';
+import Head from '../components/Head.astro';
 ---
 
 <html lang="en">
 <head>
-  <AnalyticsHead />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Terms and Disclaimer · Mattally</title>
-  <meta name="description" content="Terms of use and estimating disclaimer for Mattally material calculators." />
-  <link rel="canonical" href={new URL('/terms/', Astro.site)} />
+  <Head
+    title="Terms and Disclaimer · Mattally"
+    description="Terms of use and estimating disclaimer for Mattally material calculators."
+    canonical="/terms/"
+    ads={false}
+  />
 </head>
 <body>
   <nav><a href="/">Mattally</a> › Terms</nav>

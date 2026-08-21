@@ -1,6 +1,0 @@
-# Project-scoped Codex configuration migrated from Claude Code.
-# Codex loads this file only when the repository is trusted.
-
-[agents]
-enabled = true
-max_concurrent_threads_per_session = 3

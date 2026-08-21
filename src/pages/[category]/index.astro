@@ -1,9 +1,7 @@
 ---
 import { CATEGORIES, byCategory } from '../../data/calculators.js';
 import Footer from '../../components/Footer.astro';
-import AdSenseHead from '../../components/AdSenseHead.astro';
-import AnalyticsHead from '../../components/AnalyticsHead.astro';
-import '../../styles/global.css';
+import Head from '../../components/Head.astro';
 
 export function getStaticPaths() {
   return Object.entries(CATEGORIES).map(([key, c]) => ({
@@ -19,13 +17,11 @@ const others = Object.entries(CATEGORIES).filter(([k]) => k !== key);
 
 <html lang="en">
 <head>
-  <AnalyticsHead />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>{category.label} Calculators</title>
-  <meta name="description" content={category.blurb} />
-  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-  <AdSenseHead />
+  <Head
+    title={`${category.label} Calculators`}
+    description={category.blurb}
+    canonical={Astro.url.pathname}
+  />
 </head>
 <body>
   <nav><a href="/calculators/">All calculators</a> › {category.label}</nav>

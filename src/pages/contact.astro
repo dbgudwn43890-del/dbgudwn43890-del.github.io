@@ -1,17 +1,16 @@
 ---
 import Footer from '../components/Footer.astro';
-import AnalyticsHead from '../components/AnalyticsHead.astro';
-import '../styles/global.css';
+import Head from '../components/Head.astro';
 ---
 
 <html lang="en">
 <head>
-  <AnalyticsHead />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Contact Mattally</title>
-  <meta name="description" content="Contact Mattally about calculator corrections, feedback and site questions." />
-  <link rel="canonical" href={new URL('/contact/', Astro.site)} />
+  <Head
+    title="Contact Mattally"
+    description="Contact Mattally about calculator corrections, feedback and site questions."
+    canonical="/contact/"
+    ads={false}
+  />
 </head>
 <body>
   <nav><a href="/">Mattally</a> › Contact</nav>

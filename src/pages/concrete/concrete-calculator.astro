@@ -1,9 +1,7 @@
 ---
 import Schema from '../../components/Schema.astro';
 import Footer from '../../components/Footer.astro';
-import AdSenseHead from '../../components/AdSenseHead.astro';
-import AnalyticsHead from '../../components/AnalyticsHead.astro';
-import '../../styles/global.css';
+import Head from '../../components/Head.astro';
 import { CATEGORIES, breadcrumbs } from '../../data/calculators.js';
 import { BAGS, LB_PER_CUFT } from '../../lib/concrete.js';
 
@@ -49,16 +47,11 @@ const crumbs = breadcrumbs(Astro.site, 'concrete', 'Concrete Calculator', '/conc
 
 <html lang="en">
 <head>
-  <AnalyticsHead />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Concrete Calculator – Cubic Yards, Bags & Post Holes</title>
-  <meta
-    name="description"
-    content="Work out how much concrete you need for a slab, driveway or fence posts — in cubic yards and bags — and whether to buy bags or order ready-mix."
+  <Head
+    title="Concrete Calculator – Cubic Yards, Bags & Post Holes"
+    description="Work out how much concrete you need for a slab, driveway or fence posts — in cubic yards and bags — and whether to buy bags or order ready-mix."
+    canonical="/concrete/concrete-calculator/"
   />
-  <link rel="canonical" href={new URL('/concrete/concrete-calculator/', Astro.site)} />
-  <AdSenseHead />
   <Schema faq={faq} crumbs={crumbs} />
 </head>
 <body>

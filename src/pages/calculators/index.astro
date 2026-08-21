@@ -1,23 +1,16 @@
 ---
 import { CATEGORIES, byCategory } from '../../data/calculators.js';
 import Footer from '../../components/Footer.astro';
-import AdSenseHead from '../../components/AdSenseHead.astro';
-import AnalyticsHead from '../../components/AnalyticsHead.astro';
-import '../../styles/global.css';
+import Head from '../../components/Head.astro';
 ---
 
 <html lang="en">
 <head>
-  <AnalyticsHead />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>All Material Calculators · Mattally</title>
-  <meta
-    name="description"
-    content="Browse every Mattally calculator for landscaping, concrete, flooring and painting projects."
+  <Head
+    title="All Material Calculators · Mattally"
+    description="Browse every Mattally calculator for landscaping, concrete, flooring and painting projects."
+    canonical="/calculators/"
   />
-  <link rel="canonical" href={new URL('/calculators/', Astro.site)} />
-  <AdSenseHead />
 </head>
 <body>
   <nav><a href="/">Mattally</a> › All calculators</nav>
