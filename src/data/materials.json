@@ -65,6 +65,49 @@
         "q": "Why does the calculator tell me to order more than I need?",
         "a": "Ground is never perfectly flat, gravel settles into the soil beneath it, and some is lost in handling. A 10% overage covers that. If you are compacting the gravel, tick the box — compacted gravel needs about 20% more loose material to finish at your target depth."
       }
+    ],
+    "guide": [
+      {
+        "h": "How deep should gravel be?",
+        "p": [
+          "Depth depends on what drives or walks over it, and a driveway is not one layer. A new gravel driveway is built in two or three lifts: a 4 inch base of coarse angular stone, then a 2 to 3 inch surface layer of smaller stone. Each lift gets compacted before the next goes down. Putting 6 inches of loose stone in at once gives you 6 inches of loose stone — it never knits together, and the tyres push it aside within a season.",
+          "Topping up an existing driveway is different. You are filling ruts and replacing what has scattered, so 2 inches of surface stone is usually enough. Measure a rut at its deepest point rather than eyeballing the whole drive; most people over-order here.",
+          "A walking path needs far less. 2 inches over landscape fabric holds up fine, because foot traffic does not displace stone the way a car does. A patio or shed base wants 4 inches of compacted crusher run under whatever sits on top, and a French drain trench is filled to whatever depth the trench was dug."
+        ]
+      },
+      {
+        "h": "Which gravel size should you ask for?",
+        "p": [
+          "This is where most orders go wrong. Suppliers work from a numbered sizing system, and asking for \"gravel\" gets you whatever is in the nearest pile. The numbers describe the size of the stone, not the rock type.",
+          "#57 stone is roughly 3/4 inch and the general-purpose choice — driveway surfaces, drainage, concrete aggregate. It drains well but stays slightly loose underfoot because the stones are all one size with nothing to fill the gaps. #8 is around 3/8 inch, smaller, and packs tighter, which makes it a better final layer if you want a firmer walking surface.",
+          "Crusher run — also sold as QP, quarry process or dense grade — is crushed stone with the stone dust left in. That dust is the point: it fills the voids and lets the layer compact into something almost solid. Use it for bases and lower driveway lifts, never as a top layer where you want drainage.",
+          "#2 stone is the big one, 2 to 2.5 inches, used as the bottom lift on a soft or badly drained driveway. Angular is what you want throughout. Rounded stone rolls rather than locks, which is exactly why pea gravel makes a poor driveway."
+        ]
+      },
+      {
+        "h": "Ordering by the ton or by the cubic yard",
+        "p": [
+          "Both units are normal and which one you get quoted depends on where you buy. Quarries weigh trucks, so they sell by the ton. Landscape supply yards load with a bucket and sell by the cubic yard. Neither is wrong, and the calculator gives you both so you can order in whichever unit the person on the phone uses.",
+          "As a rough conversion, one cubic yard of crushed stone runs about 1.4 tons, though it climbs after rain because wet stone carries water weight you also pay for. Ordering on a dry day is worth a few dollars on a large load.",
+          "Watch the minimum. Most yards will not deliver under 1 ton, and many charge the same delivery fee for 1 ton as for 5. If your job needs 1.5 tons, ordering 2 usually costs a few dollars more in material and nothing extra in delivery — and leftover stone fills the low spot you will find next spring."
+        ]
+      },
+      {
+        "h": "What gravel costs",
+        "p": [
+          "Material runs roughly $15 to $75 per ton picked up, depending on stone type and how far you are from a quarry. Decorative and washed stone sits at the top of that range; crusher run and basic driveway stone at the bottom.",
+          "Delivery is the part people forget. It is usually a flat trip charge of $50 to $150 within a local radius, plus more beyond it, and it does not shrink because your order is small. On a small job delivery can cost more than the stone. That is the real argument for ordering enough the first time.",
+          "Enter your supplier's price in the cost field above and the calculator converts it across tons, yards and bags so you can compare two quotes given in different units."
+        ]
+      },
+      {
+        "h": "Mistakes that cost you a second delivery",
+        "p": [
+          "Skipping landscape fabric under a driveway or path. Without it the stone works down into the soil and the soil works up into the stone, and within two years you are ordering the same tonnage again.",
+          "Not compacting between lifts. A plate compactor rents for about $70 a day and is the difference between a driveway that holds its shape and one that ruts by autumn. Tick the compaction box in the calculator if you plan to use one — compacted stone needs roughly 20 percent more loose material to finish at your target depth.",
+          "No edging on anything narrower than a driveway. Loose stone migrates sideways under traffic, and a path without a border spreads into the lawn until it is too thin to walk on."
+        ]
+      }
     ]
   },
   "pea-gravel": {
@@ -120,6 +163,46 @@
       {
         "q": "Can pea gravel be used under playground equipment?",
         "a": "Only at proper safety depth. Loose-fill playground surfacing needs 9 in after settling, and 12 in under equipment taller than 8 ft. Check the fall height of your equipment before ordering less."
+      }
+    ],
+    "guide": [
+      {
+        "h": "Pea gravel is round, and that changes everything",
+        "p": [
+          "Pea gravel is naturally weathered stone, tumbled smooth and sorted to roughly 3/8 inch. The smooth, rounded shape is why it feels good underfoot and why it fails at jobs crushed stone handles easily.",
+          "Angular crushed stone locks together — the broken faces catch on each other and the layer behaves almost like a solid. Round stone cannot do that. It rolls, spreads and finds the lowest point available. Every decision about where to use pea gravel and how to contain it follows from that one property.",
+          "It is a poor driveway surface for the same reason. Car tyres push rounded stone aside instead of compressing it, so you get ruts down the wheel tracks and berms along the edges. If you love the look, the workaround is a compacted crusher run base with a thin pea gravel top layer and firm edging — and accepting that you will rake it."
+        ]
+      },
+      {
+        "h": "How deep, and why the playground answer is different",
+        "p": [
+          "For a path or garden bed, 2 inches over landscape fabric is right. Deeper feels like walking in sand: your foot sinks, the stone shifts, and it becomes tiring rather than pleasant. Two inches also covers the fabric properly, which is what stops weeds.",
+          "A patio or seating area takes 2 to 3 inches, over a compacted base if furniture will sit on it. Chair legs sink into pea gravel alone.",
+          "Playgrounds are the exception, and the numbers are much larger. Pea gravel is an approved loose-fill safety surface, but its protective depth is set by how far a child can fall. As a guide, 9 inches of pea gravel is rated for roughly a 5 foot fall height and 12 inches for around 10 feet — and that is compressed depth, so you install deeper and let it settle. Measure the fall height of your equipment, check it against the current ASTM F1292 and CPSC public playground guidance, and set the depth from that rather than from what looks like enough. The calculator will take any depth you enter, but it cannot know your fall height."
+        ]
+      },
+      {
+        "h": "Where pea gravel works well",
+        "p": [
+          "Dog runs are one of its best uses. It drains fast, does not hold odour the way bark does, and is gentle on paws — though it needs rinsing occasionally and a border to keep it in.",
+          "Garden beds and around downspouts work well because drainage is the whole point and nothing needs to bear weight. Fire pit surrounds are another good fit, since stone does not burn and the rounded surface is comfortable to stand on.",
+          "Between pavers and along a house foundation it does its job quietly for years. What it will not do is stay put on any slope over a gentle grade, or survive being driven on. If either applies, use crushed stone."
+        ]
+      },
+      {
+        "h": "Edging is not optional",
+        "p": [
+          "Every successful pea gravel installation has a hard border — steel or aluminium edging, pavers, timber, or a trench cut into firm turf. Without one the stone spreads outward, the layer thins, the fabric shows through and weeds come back.",
+          "Budget for edging when you budget for stone. It is a small line item next to a delivery charge, and it is the difference between topping up every spring and topping up once a decade."
+        ]
+      },
+      {
+        "h": "Bags or bulk",
+        "p": [
+          "Bagged pea gravel is convenient and expensive, running $4 to $8 for a half cubic foot bag. Bulk runs roughly $30 to $60 per ton before delivery.",
+          "The break-even lands early. A 100 square foot path at 2 inches deep needs about 0.6 cubic yards — around 33 half-cubic-foot bags, which is a car full of heavy lifting and usually more money than a bulk delivery of the same amount. Bags make sense below roughly 10 cubic feet, or when a truck genuinely cannot reach the site."
+        ]
       }
     ]
   },
@@ -183,6 +266,42 @@
       {
         "q": "What is the difference between topsoil and fill dirt?",
         "a": "Topsoil is the screened upper layer with organic matter in it, and it is what plants grow in. Fill dirt is subsoil — inert, cheaper, and valued because it compacts and stays put. Use fill dirt for bulk below about 6 in and topsoil for the top layer."
+      }
+    ],
+    "guide": [
+      {
+        "h": "Screened, unscreened, or a garden mix",
+        "p": [
+          "Topsoil is not a graded product the way stone is, and two yards from two suppliers can be very different material. What you ask for matters more than the price.",
+          "Screened topsoil has been run through a mesh to pull out rocks, roots and clods. It spreads evenly and is what you want for lawns and any finished surface. Unscreened is cheaper and fine as bulk fill under something else, but it will fight you with a rake.",
+          "Garden mix or compost-blended soil is topsoil cut with organic matter, typically somewhere around a 70/30 to 60/40 split. It is the right call for vegetable beds and new planting beds, and the wrong call for levelling under turf, where too much organic matter keeps settling as it breaks down.",
+          "Ask two questions before ordering: is it screened, and where did it come from. Soil stripped from a construction site can carry compaction, weed seed and whatever the site had in it."
+        ]
+      },
+      {
+        "h": "How deep for each job",
+        "p": [
+          "A new lawn from seed or sod wants 4 to 6 inches of topsoil over loosened subsoil. Less than 4 inches and roots hit compacted ground in the first dry spell, which is why thin new lawns brown out in July while established ones cope.",
+          "Top-dressing an existing lawn is the opposite extreme: 1/4 to 1/2 inch, worked in with the back of a rake so grass blades still show through. Burying a living lawn under an inch of soil smothers it. If you need to raise a lawn more than half an inch, do it over several passes across a season.",
+          "Garden beds take 8 to 12 inches of workable soil, since that is the root zone for most vegetables and perennials. Raised beds get filled to within an inch or two of the top rail, and they settle — expect to top up after the first season.",
+          "Filling low spots is measured at the deepest point, not averaged. Enter the deepest depth and the area of the depression, and treat the result as generous rather than exact."
+        ]
+      },
+      {
+        "h": "Why topsoil is sold by the yard, not the ton",
+        "p": [
+          "Stone has a stable weight. Soil does not. Screened topsoil runs roughly 2,000 to 2,400 lb per cubic yard dry, and saturated soil after a wet week can approach 3,000 lb for exactly the same volume of dirt.",
+          "That is why almost every supplier quotes soil by the cubic yard: volume is what you actually need, and weight is what the weather did that week. The calculator shows tonnage because some quarry-side suppliers still quote it, but if you are given a choice, buy by volume.",
+          "It also matters for delivery. A standard single-axle dump truck carries around 5 yards of soil comfortably; the same truck manages more stone by volume before it hits its weight limit. If your order is large, ask how many loads it will take, because each one may carry a trip charge."
+        ]
+      },
+      {
+        "h": "Topsoil and fill dirt are not the same purchase",
+        "p": [
+          "Topsoil is the biologically active upper layer — organic matter, structure, the material things actually grow in. Fill dirt is subsoil with the organics screened or weathered out, sold to occupy space and stay put.",
+          "Use fill dirt for the bulk of a large volume — raising a grade, backfilling, building up a base — and cap it with 4 to 6 inches of topsoil for anything that has to grow. Filling 2 feet of low ground with pure topsoil is expensive and, worse, it keeps settling for years as the organic content decomposes.",
+          "The reverse mistake is just as common: spreading fill dirt where seed is going. Nothing establishes in it, and the fix is to buy topsoil anyway."
+        ]
       }
     ]
   },
@@ -257,6 +376,51 @@
         "q": "Why should mulch not touch a tree trunk?",
         "a": "Mulch piled against bark holds moisture there, and constant damp rots the bark and invites disease and rodents. Keep a 3 to 6 in gap of bare soil around the trunk. The mulch ring should look like a doughnut, not a volcano."
       }
+    ],
+    "guide": [
+      {
+        "h": "Two to three inches, and why more is worse",
+        "p": [
+          "Mulch depth is one of the few gardening numbers with a hard ceiling. Two to three inches suppresses weeds, holds moisture and moderates soil temperature. Four inches and beyond starts causing the problems mulch is supposed to prevent.",
+          "Thick mulch sheds water rather than admitting it. A deep layer of fine shredded material mats down and forms a crust that light rain never penetrates, so the soil underneath dries out while the surface looks perfectly damp. Deep mulch also stays waterlogged at the bottom, which suffocates the shallow feeder roots living in the top few inches of soil.",
+          "Around a shrub or perennial, 2 inches is plenty. Open beds and around trees can take 3. Coarse bark nuggets tolerate the upper end better than fine shredded mulch because they do not mat.",
+          "Topping up an existing bed is not the same as mulching a new one. Rake back what is there and measure — if you already have 2 inches, adding 2 more gives you 4 and the problems above. Often the right answer is to fluff the existing layer with a rake and buy nothing."
+        ]
+      },
+      {
+        "h": "Which mulch to buy",
+        "p": [
+          "Shredded hardwood is the default: cheap, widely available, knits together so it stays on slopes, and breaks down into the soil within a season or two. That breakdown is a feature in a planting bed and a nuisance where you wanted a permanent surface.",
+          "Bark nuggets last longer and drain better, but being chunky and light they float and wash off any real slope. Pine straw is the southern standard, extremely light, and excellent on slopes because the needles knit together.",
+          "Cedar and cypress resist decay longest and carry some insect-repellent reputation. They also cost more and break down too slowly to improve the soil much.",
+          "Dyed mulch is usually recycled wood coloured with iron oxide or carbon black. The dye itself is not the concern; the source wood can be, since some of it is reclaimed construction timber. Buy from a supplier who can tell you what is in it.",
+          "Rubber mulch does not decompose, which sounds like an advantage until you want to change the bed. It is a reasonable playground surface and a poor garden one — it adds nothing to soil and is difficult to remove."
+        ]
+      },
+      {
+        "h": "Bagged or bulk: where the line falls",
+        "p": [
+          "A cubic yard is 27 cubic feet, so it takes 13.5 of the standard 2 cubic foot bags to make one yard. At $4 a bag that is about $54 per yard in bags, against roughly $30 to $45 per yard bulk before delivery.",
+          "With a $50 to $75 delivery charge, bulk wins at about 3 cubic yards and up. Below 2 yards, bags usually cost less all-in and save you owning a tarp and a wheelbarrow afternoon.",
+          "The other consideration is your driveway. Bulk mulch arrives as a pile that has to go somewhere for a day or two, and it stains concrete. Bags do not, which is sometimes worth the premium on a small suburban lot."
+        ]
+      },
+      {
+        "h": "Never pile mulch against a trunk",
+        "p": [
+          "Mulch heaped into a cone around a tree trunk — volcano mulching — is the single most common and most damaging mulching mistake, and it is everywhere in commercial landscaping.",
+          "Bark is not root tissue and is not built to sit wet. Held against the trunk it stays damp, softens and rots, and the tree loses the barrier that keeps pathogens out. Worse, roots grow up into the moist mulch and circle the trunk instead of spreading outward, eventually strangling the tree they belong to. The damage takes years to show and is usually fatal by then.",
+          "Keep mulch 3 to 6 inches clear of the trunk and spread it wide instead — ideally out to the drip line. A wide, flat ring of mulch does everything a deep pile was supposed to do and none of the harm."
+        ]
+      },
+      {
+        "h": "How often to replace it",
+        "p": [
+          "Most beds need topping up once a year, usually in spring, and the amount is far less than a full application. Hardwood mulch loses roughly an inch a year to decomposition.",
+          "Before buying, rake the existing layer. Mulch that has matted and crusted often looks thin while still being 2 inches deep — loosening it restores appearance and function for free. Fresh mulch over a compacted old layer just deepens the mat.",
+          "Every three or four years it is worth pulling some of the accumulated layer out entirely rather than adding to it, particularly in beds that never seem to dry out."
+        ]
+      }
     ]
   },
   "dirt": {
@@ -309,6 +473,41 @@
       {
         "q": "How do I work out how much dirt fills a hole?",
         "a": "Enter the hole's actual depth rather than a landscaping depth, and use its length and width at the widest point. Holes are rarely neat rectangles, so round up — being a wheelbarrow short is worse than being one over."
+      }
+    ],
+    "guide": [
+      {
+        "h": "Fill dirt is not topsoil, and the difference is the point",
+        "p": [
+          "Fill dirt is subsoil — the layer below the growing zone, with the organic matter screened out or long since gone. It is sold to occupy volume and hold its shape, which is exactly what topsoil cannot do.",
+          "That absence of organic matter is a feature here. Organics decompose, and as they decompose the soil above them subsides. Fill a 2 foot hole with topsoil and you will be filling it again in three years. Fill it with fill dirt and it stays where you put it.",
+          "The trade-off is that nothing grows in it, so anything that needs to support plants gets a cap of 4 to 6 inches of topsoil over the fill. Buy the bulk volume as fill and the finish layer as topsoil — it costs less and performs better than either one alone."
+        ]
+      },
+      {
+        "h": "Order more than the hole measures",
+        "p": [
+          "Loose fill dirt shrinks when it compacts. Depending on soil type and how hard it is compacted, expect to lose roughly 15 to 25 percent of the loose volume, and more in clay. A hole that measures 10 cubic yards needs somewhere around 12 yards of loose dirt delivered to finish flush.",
+          "The calculator adds a waste allowance on top of your measured volume, and ticking the compaction box increases it further. Neither figure can know your soil, so treat the result as a planning number and expect to be within a load rather than exact.",
+          "Compaction is not optional on anything structural. Fill in lifts of 6 to 8 inches and compact each one before the next — a full trench backfilled loose and left to settle will subside for years and can undermine whatever sits on it. On soft or clay soil, moisten each lift lightly before compacting; bone-dry clay will not knit together."
+        ]
+      },
+      {
+        "h": "Grading soil away from the house",
+        "p": [
+          "The standard target is a fall of about 6 inches over the first 10 feet away from the foundation — roughly a 5 percent slope. That is the figure most residential codes work from, and it exists because water sitting against a foundation is the origin of most wet basements.",
+          "Keep the finished soil at least 6 inches below any siding, brick ledge or sill plate. Piling dirt up against siding to fix a grade creates a moisture and termite path straight into the wall framing, and it is a common and expensive mistake.",
+          "Measure the fall with a level on a straight board, or a string line and a tape, before ordering. A 10 by 40 foot strip regraded to that slope needs about 2.5 cubic yards once you account for the wedge shape — measure the average depth, not the deepest point."
+        ]
+      },
+      {
+        "h": "Working out the volume of a hole or trench",
+        "p": [
+          "For a rectangular excavation, use the length and width of the opening and the average depth. Average, not deepest: most holes are bowl-shaped and using the deepest measurement overshoots badly.",
+          "Round holes — a removed tree stump, an old pool — are easier entered as a circle using the diameter across the widest point. Sloped-sided holes are close enough if you average the top and bottom widths.",
+          "A trench is length times width times depth, and it is worth checking the width against reality rather than the plan. Machine-dug trenches come out wider than specified, sometimes by half again, and that difference is real material you have to buy.",
+          "Where fill dirt is genuinely cheap, ordering a little long is usually the right call. A short load leaves you with a partly filled hole and a second delivery charge that costs more than the extra dirt would have."
+        ]
       }
     ]
   }

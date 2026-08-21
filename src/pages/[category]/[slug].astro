@@ -133,6 +133,13 @@ const crumbs = breadcrumbs(Astro.site, material.category, `${material.name} Calc
     <output id="revResults" for="rev"></output>
   </details>
 
+  {material.guide?.map((section) => (
+    <>
+      <h2>{section.h}</h2>
+      {section.p.map((para) => <p>{para}</p>)}
+    </>
+  ))}
+
   <details class="method">
     <summary>How this calculator works</summary>
     <p>Volume is area multiplied by depth. Weight is that volume multiplied by the material's density.</p>
