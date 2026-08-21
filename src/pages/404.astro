@@ -1,0 +1,28 @@
+---
+import { CATEGORIES, byCategory } from '../data/calculators.js';
+import Footer from '../components/Footer.astro';
+import Head from '../components/Head.astro';
+---
+
+<html lang="en">
+<head>
+  <Head title="Page not found · Mattally" ads={false} noindex />
+</head>
+<body>
+  <nav><a href="/">Mattally</a> › Not found</nav>
+  <h1>That page isn't here</h1>
+  <p>The link is wrong or the page moved. Every calculator is below.</p>
+
+  {Object.entries(CATEGORIES).map(([key, c]) => (
+    <>
+      <h2><a href={`/${key}/`}>{c.label}</a></h2>
+      <ul>
+        {byCategory(key).map((calc) => (
+          <li><a href={calc.href}>{calc.name}</a></li>
+        ))}
+      </ul>
+    </>
+  ))}
+  <Footer />
+</body>
+</html>
