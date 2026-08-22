@@ -42,6 +42,54 @@ const faq = [
   },
 ];
 
+const guide = [
+  {
+    h: 'Bags or ready-mix: where the line falls',
+    p: [
+      'This is the decision that changes the cost and the day, and it turns on one number: how many cubic yards you need.',
+      'Under about 1.5 cubic yards, buy bags. A ready-mix truck charges a short-load fee below its minimum — typically 3 to 5 yards, and often $100 to $200 on top of the material — which wipes out the price advantage on a small pour.',
+      'Over about 2 cubic yards, order the truck. Bagged concrete costs roughly twice as much per finished yard, and the labour gap is worse than the price gap: 2 yards is 90 eighty-pound bags, which is a full day of mixing for two people against a pour that takes under an hour. Hand-mixing also means the first batch is curing while you mix the last, and a slab poured in stages has cold joints running through it.',
+      'Between 1.5 and 2 yards, price it both ways. Ask the plant about the short-load fee specifically, because it varies more between suppliers than the concrete does.',
+    ],
+  },
+  {
+    h: 'How thick, and why edges are different',
+    p: [
+      'Four inches is the residential standard and it covers patios, sidewalks, shed floors and driveways carrying cars and SUVs. Going thicker is not automatically better — a 4 inch slab on a properly prepared base outperforms a 6 inch slab poured on soft ground.',
+      'Go to 5 or 6 inches where heavy trucks, an RV or a hot tub will sit, and on expansive clay soils that move seasonally. Anywhere a vehicle crosses a sidewalk — a driveway apron, for instance — wants 6 inches even though the rest of the walk does not.',
+      'Thicken the edges of any slab by an extra inch or two, tapering back a foot from the perimeter. Edges crack first because the soil beside them provides no lateral support, and the extra concrete costs almost nothing at the point where it matters most.',
+      'Footings are a different calculation entirely. They must bear on undisturbed soil at least 12 inches down and below your local frost line, measured to the bottom of the footing. Frost depth runs from around 12 inches in the mild South to 60 inches in the far North, so this is one figure to take from your local building department rather than from a national average.',
+    ],
+  },
+  {
+    h: 'Base preparation is most of the job',
+    p: [
+      'Concrete does not span soft ground. A slab is only as good as what it sits on, and most residential slab failures are base failures rather than concrete failures.',
+      'Excavate to allow 4 to 6 inches of compacted gravel under the slab thickness. Crusher run or dense-grade aggregate is the right material because the stone dust lets it lock together; single-sized drainage stone stays loose. Compact it in lifts with a plate compactor rather than dumping the full depth at once.',
+      'A vapour barrier goes under any interior slab and under anything that will later be covered with flooring. Six mil polyethylene is the usual minimum, and it goes directly under the concrete rather than under the gravel.',
+      'Reinforcement depends on the job. Fibre mesh mixed into the concrete controls surface cracking and is cheap to add at the plant. Steel — welded wire mesh or rebar on chairs — is what carries structural load, and it has to sit in the middle of the slab rather than on the ground, which is what the chairs are for. Rebar lying on the subgrade does almost nothing.',
+    ],
+  },
+  {
+    h: 'Concrete cracks — control where',
+    p: [
+      'All concrete cracks. Curing shrinkage is unavoidable, so the working assumption is not whether it cracks but whether the crack lands where you put it.',
+      'Cut control joints to about a quarter of the slab depth — 1 inch deep in a 4 inch slab — spaced in feet at roughly two to three times the slab thickness in inches. For a 4 inch slab that is joints every 8 to 12 feet. Keep the panels between joints roughly square; a long narrow panel cracks across its middle regardless of the joints around it.',
+      'Cut them early. Saw-cut joints go in within 6 to 12 hours of the pour, before shrinkage cracking starts, or they are decorative rather than functional. Tooled joints go in during finishing.',
+      'Isolation joints separate the slab from anything rigid it touches — a house foundation, a column, an existing walk. Without one the two move against each other and something breaks.',
+    ],
+  },
+  {
+    h: 'Curing is not drying',
+    p: [
+      'Concrete gains strength through a chemical reaction with water, not by drying out. Water leaving too fast stops that reaction, and a slab that dries in a day is permanently weaker than one kept damp for a week.',
+      'Keep it wet for at least 7 days — plastic sheeting, damp burlap, a curing compound or periodic misting. Concrete reaches roughly 70 percent of its design strength in that first week and continues gaining for a month.',
+      'Weather sets the schedule. Above 90°F, water leaves faster than the reaction can use it, so pour early in the morning and protect the surface immediately. Below 40°F the reaction slows to nearly nothing, and fresh concrete that freezes before it sets is ruined rather than delayed.',
+      'Ordinary foot traffic is fine after 24 to 48 hours. Keep vehicles off for a week, and a heavy vehicle or an RV off for the full 28 days.',
+    ],
+  },
+];
+
 const crumbs = breadcrumbs(Astro.site, 'concrete', 'Concrete Calculator', '/concrete/concrete-calculator/');
 ---
 
@@ -124,6 +172,13 @@ const crumbs = breadcrumbs(Astro.site, 'concrete', 'Concrete Calculator', '/conc
   <h2>What you need</h2>
   <output id="results" for="calc"></output>
   <button type="button" id="copy">Share this estimate</button>
+
+  {guide.map((section) => (
+    <>
+      <h2>{section.h}</h2>
+      {section.p.map((para) => <p>{para}</p>)}
+    </>
+  ))}
 
   <details class="method">
     <summary>How this calculator works</summary>

@@ -125,6 +125,42 @@
         "q": "Do I need underlayment, and how much?",
         "a": "Floating floors — laminate and most vinyl plank — need it unless the boards come with it pre-attached. Rolls come in 100, 200, 360, 450 and 630 sq ft, and you want about 10% more than your floor area because the seams overlap by roughly 6 in."
       }
+    ],
+    "guide": [
+      {
+        "h": "Measure the room, then measure it again",
+        "p": [
+          "Rooms are rarely square. Measure the width at both ends and the length down both walls, and use the larger figure of each pair — flooring has to reach the widest point, and a wall that bows out by an inch over 15 feet is normal in a house of any age.",
+          "Break L-shaped and irregular rooms into rectangles, work each one out separately, and add the results. Do not try to average an odd shape into one number; you will be short at the awkward end, which is exactly where offcuts are least likely to help you.",
+          "Include closets, and include the space under where appliances will sit. Flooring that stops at the closet threshold looks unfinished and makes the closet floor impossible to change later. Stopping flooring under a dishwasher is worse — the appliance eventually comes out for service, and it will not go back in over a raised floor.",
+          "Subtract permanent fixtures only if they are genuinely large and genuinely permanent: a kitchen island on a fixed base, a built-in hearth. Skipping a 6 square foot cutout to save a fraction of a box is not worth the risk of coming up short."
+        ]
+      },
+      {
+        "h": "Waste is not padding — it is the material you cut off",
+        "p": [
+          "Every plank that meets a wall gets cut, and the offcut is only reusable if it is long enough to start the next row. That is where waste actually goes, and it is why the percentage depends on layout rather than on how careful you are.",
+          "A straight lay in a simple rectangular room runs 7 to 10 percent. A diagonal lay pushes it to 10 to 15 percent, because every cut at the perimeter is now an angle and angled offcuts rarely fit anywhere else. Herringbone and chevron run 15 to 20 percent: the pattern consumes short pieces by design and the perimeter is a continuous series of angled cuts.",
+          "Add to that whatever your room's shape costs you. Bay windows, alcoves, doorways into hallways and anything with more than four corners each add cuts, and the calculator lets you flag them rather than guessing a single blanket number.",
+          "Solid hardwood sits at the top of every range because boards arrive with defects you cull as you go — knots, splits, colour that does not belong. Prefinished laminate and vinyl are consistent enough that you use nearly everything."
+        ]
+      },
+      {
+        "h": "Buy the whole job in one dye lot",
+        "p": [
+          "Flooring is manufactured in batches, and colour varies between them. Laminate and vinyl print in runs; hardwood and engineered board vary by the tree. The batch number is printed on the box, and two boxes from different lots laid side by side can be visibly different under daylight.",
+          "This is the practical reason to order generously rather than exactly. If you run out mid-job, the replacement box is likely to be a different lot, and the store may have no stock at all — flooring lines are discontinued constantly.",
+          "Keep one full unopened box after the job. Not offcuts: a box. Damage happens, and having matching material in the garage is the difference between replacing three planks and replacing a floor."
+        ]
+      },
+      {
+        "h": "What the calculator does not include",
+        "p": [
+          "Underlayment is a separate purchase, sold by the roll in square feet, and it is not optional for floating floors. Buy the room's actual square footage plus about 10 percent for overlap — no cutting waste, since it rolls out continuously. Some laminate and LVP comes with an attached pad, which means you skip this entirely; check the box before ordering both.",
+          "Transition strips, quarter round, thresholds and stair nosing are all sold by the linear foot and are easy to forget until installation day. Measure your doorways and the perimeter where trim will go.",
+          "Adhesive, tile spacers, grout and backer board apply to tile and stone jobs and are their own calculation. So is subfloor preparation, which is where surprises live — a floor that needs levelling compound before anything goes down can add real cost to a job that looked simple."
+        ]
+      }
     ]
   },
   "carpet": {
@@ -169,6 +205,49 @@
       {
         "q": "What about patterned carpet?",
         "a": "Patterned carpet needs extra length so the repeat lines up across seams and along walls. Ask your supplier for the pattern repeat measurement and add roughly one repeat per seam. Plain and textured carpets do not have this problem."
+      }
+    ],
+    "guide": [
+      {
+        "h": "Carpet is sold off a roll, and that decides your waste",
+        "p": [
+          "Everything else in flooring is sold by area. Carpet is sold by length off a fixed-width roll, and you pay for the full width whatever your room measures. That single fact drives every carpet estimate.",
+          "A 10 foot wide room takes 12 foot carpet, and the extra 2 feet is bought, paid for and thrown away. The same 12 foot roll in an 11 foot 6 inch room wastes only 6 inches. The room that costs the least per square foot is the one closest to just under the roll width — which is why 12 foot carpet exists at all, since most American bedrooms fall between 10 and 12 feet.",
+          "Running the carpet the other way round is worth checking. A 14 by 11 room takes 14 feet of 12 foot carpet one way and 11 feet the other, and the difference is real money. The calculator works out both orientations so you can see which direction runs cheaper before you commit."
+        ]
+      },
+      {
+        "h": "Roll widths and why 13 ft 6 in exists",
+        "p": [
+          "Twelve feet is the dominant US width and where the choice of styles is widest. If a carpet you like comes only in 12 foot, that is normal.",
+          "Fifteen foot and 13 foot 6 inch are sold as wide goods, and they exist for exactly one reason: to cover a wide room without a seam. A 13 foot room in 12 foot carpet needs a seam; in 13 foot 6 inch it does not. Wide goods usually cost more per square yard and come in fewer styles, but on the right room they save both money and a visible join.",
+          "Six foot is mostly commercial, and useful for hallways and stairs where a wide roll would be almost entirely waste."
+        ]
+      },
+      {
+        "h": "Where a seam goes, and where it must not",
+        "p": [
+          "Any room wider than the roll needs a seam. Seams are normal and a good fitter makes them nearly invisible on a cut pile, but placement matters more than technique.",
+          "Run seams in the direction of the main light source, not across it. A seam running toward a window disappears; one running across the light catches a shadow line down its length forever.",
+          "Keep seams out of doorways and traffic paths. Every step across a seam works at it, and the one place a seam will eventually open is the place people walk. Push it toward the edge of the room or under where furniture sits.",
+          "Keep the pile direction consistent across a seam. Carpet has a nap, and two pieces joined with the pile running opposite ways look like two different colours regardless of how well the join is made."
+        ]
+      },
+      {
+        "h": "Square yards, square feet, and comparing quotes",
+        "p": [
+          "The US carpet trade historically priced by the square yard and much of it still does, while flooring stores increasingly quote square feet. One square yard is 9 square feet, so a $27 per square yard carpet is $3 per square foot — the same number presented two ways, and an easy way to make one quote look far cheaper than another.",
+          "Get both quotes in the same unit before comparing. The calculator shows both figures for this reason.",
+          "Check what a quoted price includes. Carpet, padding, fitting, tack strip, furniture moving and old carpet disposal are sometimes bundled and sometimes each a separate line, and a low carpet price with everything itemised beneath it often lands higher than an all-in quote."
+        ]
+      },
+      {
+        "h": "Padding is a separate purchase",
+        "p": [
+          "Padding is bought by the square foot or square yard of floor area, not off the carpet roll, so it has almost none of the width waste carpet does. Buy the room area plus a small allowance.",
+          "Density matters more than thickness. A dense 8 lb pad at 7/16 inch outlasts a soft, thick one and supports the carpet backing properly; too thick and soft a pad flexes under the carpet and breaks it down from below. Most residential carpet warranties specify a maximum pad thickness — usually 7/16 or 1/2 inch — and fitting a thicker one can void the warranty.",
+          "The estimate above covers carpet only. Padding, tack strip and fitting labour are all separate and worth pricing before deciding between two carpets."
+        ]
       }
     ]
   }

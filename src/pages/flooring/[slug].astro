@@ -104,6 +104,13 @@ const crumbs = breadcrumbs(Astro.site, 'flooring', `${type.name} Calculator`, `/
   <output id="results" for="calc"></output>
   <button type="button" id="copy">Share this estimate</button>
 
+  {type.guide?.map((section) => (
+    <>
+      <h2>{section.h}</h2>
+      {section.p.map((para) => <p>{para}</p>)}
+    </>
+  ))}
+
   <details class="method">
   <summary>How this calculator works</summary>
   {isCarpet ? (

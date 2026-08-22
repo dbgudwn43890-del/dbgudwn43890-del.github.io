@@ -36,6 +36,54 @@ const faq = [
   },
 ];
 
+const guide = [
+  {
+    h: 'What actually changes coverage',
+    p: [
+      'A gallon covers about 350 to 400 square feet on smooth, previously painted drywall. That figure is on the can and it assumes near-ideal conditions, so treat it as a ceiling rather than a promise.',
+      'Texture is the biggest variable. Knockdown or orange peel texture has more surface area than it appears to, and light texture drops coverage to roughly 300 square feet per gallon. Heavy texture, popcorn ceilings and stucco can halve it. Bare drywall, new plaster and raw wood drink the first coat regardless of texture, which is what primer is for.',
+      'Colour change matters more than most people expect. Going from white to a mid tone is straightforward; going dark over light, or light over dark, is a three-coat job however good the paint is. Deep reds and saturated yellows are the worst offenders because the pigments are transparent — a red accent wall over white regularly takes three or four coats.',
+      'Application method changes the number too. Spraying puts more paint in the air and on the surface than rolling, and a sprayed job typically uses 20 to 30 percent more material even though it goes faster.',
+    ],
+  },
+  {
+    h: 'Why the estimate says two coats',
+    p: [
+      'Two coats is the working assumption for almost every repaint, and it is not a manufacturer upsell. One coat over an existing colour looks acceptable when wet and shows lap marks, roller texture and patchy sheen once it dries and the light moves across the wall.',
+      'The second coat is also what delivers the durability the paint is rated for. Scrubbability, stain resistance and colour retention are all specified at the full film thickness, which one coat does not reach.',
+      '"One-coat" paints are thicker, higher-solids products that genuinely can cover in one pass — over a similar colour, on a smooth prepared surface, applied generously. Over a colour change or bare substrate they behave like any other paint.',
+      'Where one coat is genuinely enough: refreshing a wall with the exact same paint, and painting a ceiling that was recently done in the same white.',
+    ],
+  },
+  {
+    h: 'When primer is worth buying separately',
+    p: [
+      'Primer is not a cheaper first coat. It is a different product that bonds to difficult surfaces and seals porous ones so the finish paint stays on the surface where it does its work.',
+      'You need it on bare drywall, new plaster, bare wood and any patched or skim-coated repair — otherwise the repaired spots absorb differently and flash through the finish as dull patches. You need it over glossy surfaces after sanding, and over any water, smoke or tannin stain, where a stain-blocking primer is the only thing that stops the mark bleeding through however many topcoats go on. Cedar and redwood bleed tannin indefinitely without one.',
+      'A drastic colour change is easier with a tinted grey primer than with extra topcoats, and it is cheaper — primer costs less per gallon than finish paint.',
+      'You can skip it when repainting a sound, previously painted wall in a similar colour with no repairs. Primer covers around 200 to 300 square feet per gallon, less than finish paint, because it is doing a different job.',
+    ],
+  },
+  {
+    h: 'Choosing sheen room by room',
+    p: [
+      'Sheen decides how the wall survives daily life, and how much of the wall you see. The flatter the finish, the better it hides imperfections and the worse it takes cleaning.',
+      'Flat and matte hide roller marks, drywall seams and wavy walls, which makes them right for ceilings and for adult bedrooms and formal rooms. They mark when wiped.',
+      'Eggshell and satin are the general-purpose choices — enough sheen to wipe down, little enough to stay forgiving. Eggshell for living rooms and hallways, satin where hands and moisture reach.',
+      'Semi-gloss and gloss go on trim, doors, cabinets and bathrooms. They clean up well and take repeated wiping, and they show every flaw underneath, so surface preparation has to match.',
+      'A useful rule: the more a surface gets touched, the more sheen it needs; the more imperfect it is, the less it can take.',
+    ],
+  },
+  {
+    h: 'Buy the whole room at once',
+    p: [
+      'Paint is tinted in batches, and two gallons of the same colour mixed on different days can differ slightly. The fix is to buy all of it in one purchase, and for a large job to box it — pour every gallon into a single bucket, stir, and work from that.',
+      'Buying in gallons is also cheaper than buying in quarts once you need more than about two quarts, and a five gallon bucket is cheaper again per gallon if the job is big enough. Round up to the next whole container rather than trying to land exactly.',
+      'Keep the leftovers with the colour code and the store name written on the lid, not just the manufacturer name. Touch-up paint that matches is worth more than the few dollars the extra quart cost, and computer colour matching from a chip is never quite as close as the original formula.',
+    ],
+  },
+];
+
 const crumbs = breadcrumbs(Astro.site, 'painting', 'Paint Calculator', '/painting/paint-calculator/');
 ---
 
@@ -113,6 +161,13 @@ const crumbs = breadcrumbs(Astro.site, 'painting', 'Paint Calculator', '/paintin
   <h2>What to buy</h2>
   <output id="results" for="calc"></output>
   <button type="button" id="copy">Share this estimate</button>
+
+  {guide.map((section) => (
+    <>
+      <h2>{section.h}</h2>
+      {section.p.map((para) => <p>{para}</p>)}
+    </>
+  ))}
 
   <details class="method">
   <summary>How this calculator works</summary>
